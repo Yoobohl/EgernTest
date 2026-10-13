@@ -1,5 +1,5 @@
 domain_suffix_set:
-- linemobile.com
+- gcld-line.com
 - lin.ee
 - line-apps-beta.com
 - line-apps-rc.com
@@ -7,15 +7,15 @@ domain_suffix_set:
 - line-beta.me
 - line-cdn.net
 - line-scdn.net
-- line.me
 - line.biz
-- linefriends.com
+- line.me
+- line.naver.jp
 - linecorp.com
-- nhncorp.jp
-- linetv.tw
+- linefriends.com
+- linefriends.com.tw
 - linegame.jp
-- gcld-line.com
+- linemobile.com
 - linemyshop.com
 - lineshoppingseller.com
-- linefriends.com.tw
-- line.naver.jp
+- linetv.tw
+- nhncorp.jp

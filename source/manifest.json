@@ -3,334 +3,561 @@
   "resources": [
     {
       "name": "private",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/private.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/private.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 130,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 130,
+      "mrs_sha256": "0f9ba48d4d0b0d192a4e7c3548486dde05e5a92e6e58e8ea8c9cc302712a1420",
+      "text_sha256": "b4e2e2267134feef16845c6645f8fed2cc23280cf8a6f1b63f4fe1c6aeeae6a4"
     },
     {
       "name": "private_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/private.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/private.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/private.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 18,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 18,
+      "mrs_sha256": "76bcc1ebe5c84aa54362441d924cf7396ddb279d2261d79034235e5ae68fd3e4",
+      "text_sha256": "e1b545e0f54932fd7e3d36fb85de7feff23f50277adf95f8560be091efbdb578"
     },
     {
       "name": "games_cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-games@cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-games@cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-games@cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 37,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 37,
+      "mrs_sha256": "69277435faafabdc0836cf14901918302efff1f59b6eb107becc16931749c804",
+      "text_sha256": "0bec91e5332bf3eaf8c2427c53b523bbbf87fe97fd37373821aa53b2f9a93bfb"
     },
     {
       "name": "epicgames",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/epicgames.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/epicgames.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/epicgames.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 30,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 30,
+      "mrs_sha256": "87096a7c01ded9ac4cd8639dbd6871663c1df60b534c78cee34cace1e3b7bd3e",
+      "text_sha256": "03208068ce9c5c1ef3e08bbbf7fae9d7d028cfa5a5b271ef726d8d6a3f440644"
     },
     {
       "name": "nvidia_cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/nvidia@cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/nvidia@cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/nvidia@cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 4,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 4,
+      "mrs_sha256": "2b2c93733c4d047e3280fc8063a4ab836fa563f3c3832080fb073e1243037c39",
+      "text_sha256": "aeaa52c11a91f88883d89faa369bac00313467629aa3273996c0888d28803e72"
     },
     {
       "name": "apple_cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple@cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple@cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple@cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 296,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 296,
+      "mrs_sha256": "e92c43d1c966bab094b46e10a0c4d6e41cf7e29cb629215a4d1747ed871a70eb",
+      "text_sha256": "57019ec94749035268cd8d8e611f423e51c8e971bec7f0de9c546632d355f5c2"
     },
     {
       "name": "microsoft_cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft@cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft@cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft@cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 189,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 189,
+      "mrs_sha256": "ba61438136448454859e2eda5e1c0500a2415e6f794c4b0cdc35d2353b0bc009",
+      "text_sha256": "6adb756a882b0e4f41592b54c9037b1b92123467435a95155d32a309a4cc43ee"
     },
     {
       "name": "geolocation-cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-cn.yaml",
-      "count": 5421,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 5404,
+      "mrs_insertion_count": 5421,
+      "mrs_sha256": "5b727c3695c3f3883628ff2d5ddcd8cd8b651039989b6a3232020a8c29385ffb",
+      "text_sha256": "ccabea826f1bee22342d1d6d607801089d9de935e958767dfd25ef47450440be"
     },
     {
       "name": "cn_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/cn.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 10014,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 10014,
+      "mrs_sha256": "332961b4125fd04e2bcd3f141fce45391f9cc80393b06373b98c1ebf0e766170",
+      "text_sha256": "8aba34fd389d8aeb069e6d476ba3625cea37e4b616f09b8b8516847c7043a84a"
     },
     {
       "name": "googlefcm",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/googlefcm.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/googlefcm.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/googlefcm.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 12,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 12,
+      "mrs_sha256": "7196a82539722cdaa8454f821a8ac903b9df89d6f25009667f0ffa083b006cd9",
+      "text_sha256": "5888af989b3ac8423b2e967437086ec58a0542856df84618ba6724061453b676"
     },
     {
       "name": "youtube",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/youtube.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/youtube.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/youtube.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 178,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 178,
+      "mrs_sha256": "e212b2ce9f39b30f4e2ab57da9ed0937673606bc56bb46e5d55ad7dd9af00aef",
+      "text_sha256": "c20c54d2acd671a7000adbaf16cfe4c7027c19d2947365f79f0d5a7de3d922ee"
     },
     {
       "name": "google",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/google.yaml",
-      "count": 1075,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/google.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/google.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 1049,
+      "mrs_insertion_count": 1075,
+      "mrs_sha256": "3f70be19243180b98ab65c9812db9af5d0327fe72a58480cb97e422f3e829271",
+      "text_sha256": "6c524f9540b8783d6c0cf11a5538495f67632d02ba1431bbfe3a24cc41a52a79"
     },
     {
       "name": "google_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/google.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/google.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/google.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 933,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 933,
+      "mrs_sha256": "71cf81ffcb702b050e04b72b09991ac24f234699346f4cc7b9860b6169907cbf",
+      "text_sha256": "9ee28114a6030f454940501e14a8d04418df45b9032c5a15062cf6386d3d0843"
     },
     {
       "name": "ai",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ai-!cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-ai-!cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ai-!cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 189,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 189,
+      "mrs_sha256": "0061a27e834fae935790595713e7710c85a3072d28f87c0ad1acc59b244b2440",
+      "text_sha256": "b5b6342dee1bcd2cbb775c0bef1670b910555e68246b5ceaa5f166dfd76f2f12"
     },
     {
       "name": "github",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/github.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/github.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/github.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 65,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 65,
+      "mrs_sha256": "1ff37cbbd49e7962ac781014c400e2b292d09148c96791536b92c184837edf60",
+      "text_sha256": "ee1a52b513dd90334e86f14fb7931eb066608b3db577601039e5d3f856e902a8"
     },
     {
       "name": "microsoft",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft.yaml",
-      "count": 749,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 747,
+      "mrs_insertion_count": 749,
+      "mrs_sha256": "554fd51c2b088abebf6b859c4401d532c1fb1f50f5823bcda7e1bae995552e4b",
+      "text_sha256": "64897f4b0ae2fb7e477ff6f5ff912c33a2fb2ce24671a57e7af324869c4a43b0"
     },
     {
       "name": "microsoft_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/microsoft.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/microsoft.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/microsoft.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 1084,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 1084,
+      "mrs_sha256": "8bf995d7d6f30b9c76adc11240134da6f4f08e354b701faa2a97cdbbabf6fc12",
+      "text_sha256": "05b4b9109d5077819338ee8e0d3b8b5bff6f274a692fc577ca5d6b5f6518109a"
     },
     {
       "name": "apple",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple.yaml",
-      "count": 1792,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 1789,
+      "mrs_insertion_count": 1792,
+      "mrs_sha256": "ef067fccb6b336c650703e8126707690e038122598ec813b6edb4dfae8a51823",
+      "text_sha256": "9179e0cb9fbdbc1b8f4cfd016f14cc9e30f98d698b26cc7b2f700aff2cc16d99"
     },
     {
       "name": "apple_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/apple.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/apple.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/apple.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 25,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 25,
+      "mrs_sha256": "cbfa26ccde9b09d7162be9e3f38fe0ad3d0fdacdcc4df43b13ffc6ddd66f7cd4",
+      "text_sha256": "1cebb7b1e8f4f378f534180349718d03d02fd3442e124af9be36309d84de111b"
     },
     {
       "name": "telegram",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/telegram.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/telegram.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 21,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 21,
+      "mrs_sha256": "ffa4d1d3e8649965e529c1c570d8add75a0d6f70aa8503ece8add841ce48c0e7",
+      "text_sha256": "80ac89276c1939e23041eb0fa8c52a97407c891280fa8179a4ae6cfb1d40c758"
     },
     {
       "name": "telegram_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/telegram.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/telegram.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/telegram.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 12,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 12,
+      "mrs_sha256": "a46940c553bbfa0ceeaf379ac0d97dde0372732ac2069acb55700fbcb68a912e",
+      "text_sha256": "da634475e8637982c0b46adf8058c72b6a216f199746126f764ccc9217197139"
     },
     {
       "name": "steam",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/steam.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/steam.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/steam.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 60,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 60,
+      "mrs_sha256": "29f97832356a15e6125a601c98a7286324054fbca8b74b56e0eb43e2fb3a64aa",
+      "text_sha256": "0614d688a1f36f9e8c5d95c2adbc3778ada53fc0e827432cb6c67231f5eab216"
     },
     {
       "name": "steam_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/steam.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/steam.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/steam.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 24,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 24,
+      "mrs_sha256": "2eac080d757cbbaadd8cd8db94ea4df937e48e14dbf44d9f79f791342f835679",
+      "text_sha256": "185a56f15f2f4095c6d2ab0a1e6908fc52ccc3636f95c6e58398ff70708e84b3"
     },
     {
       "name": "tiktok",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/tiktok.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/tiktok.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/tiktok.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 37,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 37,
+      "mrs_sha256": "c6c2a01e6fa45f8086242ee2e197e75de3450080132e5bdf198624aced71fcd9",
+      "text_sha256": "ece7aff345832302189a4fbc78535df5ff7023db61b417221d449b6f938c157e"
     },
     {
       "name": "tiktok_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/tiktok.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/tiktok.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 39,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 39,
+      "mrs_sha256": "aab1537acf0379f4673e42cdd11150aa41ba610c37043ee2b1ae5a5adfbb488c",
+      "text_sha256": "c07aaf387f36f6bd99514e130502fbe8c8d683d4ac04016acc7abcc715e9ab01"
     },
     {
       "name": "twitter",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/twitter.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/twitter.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 24,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 24,
+      "mrs_sha256": "b287eac1d2a97da62e17cffddf55e0296665a289a41fba774fdba7397e6ea3f7",
+      "text_sha256": "50f50161502d7ae9cb41a7d8caee1aba819f441f4ed77e9ca5185366e45748b1"
     },
     {
       "name": "twitter_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/twitter.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/twitter.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 21,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 21,
+      "mrs_sha256": "db80078a725eba2341db2c562f5585effdc2d4fd8927dcb2106c606c1276a39b",
+      "text_sha256": "521d017de2616efd6c06b38ab646eb3ef6edd0671e1a4183d062e1ad5c21e497"
     },
     {
       "name": "meta",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/meta.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/meta.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/meta.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 555,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 555,
+      "mrs_sha256": "7a347ed588a6cf00c28dde246733d9c217283177a575c4d2534ab7538bdf1143",
+      "text_sha256": "b860c1c69c74d682cfcfd4e378b902fe1954f105df3fcba796cbbc44a8a8f223"
     },
     {
       "name": "facebook_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/facebook.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/facebook.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/facebook.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 82,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 82,
+      "mrs_sha256": "82abaa6ff90687a859587ec9406b3c890dba94584ed066424b78b54502577bba",
+      "text_sha256": "83b2d776dbc0598ebf709359b02f211da2c669836ebb382f58349b7b21c6c940"
     },
     {
       "name": "line",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/line.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/line.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/line.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 20,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 20,
+      "mrs_sha256": "cb553fec05e5d082ce502db4d518b594ea66eb481e0db31905ce395ebee640e4",
+      "text_sha256": "5f47208f3ea385ec8ee1e53431a3e3fd9ec2b3ec0456453b0145255c60f706e2"
     },
     {
       "name": "netflix",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/netflix.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/netflix.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/netflix.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 24,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 24,
+      "mrs_sha256": "a6fea26ce2168e069fe865f269e86e5e031a51b5b3855fe297e1bc004a3170bd",
+      "text_sha256": "994bd248e4fb016c92ddaf62cda7b851550d921f75ed0f9ac83d5cd80d8a188f"
     },
     {
       "name": "netflix_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/netflix.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/netflix.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/netflix.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 61,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 61,
+      "mrs_sha256": "b44f1aec75c42518743eefa5264ee8a553dac17d7214794d90f8e41fbc0e45f7",
+      "text_sha256": "e535f5420cff7cf505b7d7397a680856c2da74ebedbf2eec43eebaae4b56396b"
     },
     {
       "name": "emby",
-      "source": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.txt",
-      "count": 218,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/666OS/rules@release/mihomo/domain/Emby.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 215,
+      "mrs_insertion_count": 218,
+      "mrs_sha256": "ee502421f3f8fdb2e4f73fe2c90419efdb610fc841d0dd9b646eb7006e796608",
+      "text_sha256": "91f075213bc2df9d5360541f52c84077561fea3448c3deb23cab7a276cfb2940"
     },
     {
       "name": "emos",
-      "source": "https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-mihomo.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/binaryu/emos-proxy-rule@main/rules/emos-mihomo.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-mihomo.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 42,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 42,
+      "mrs_sha256": "68acc58ef1e3bc8cc4f7ce5a37e29148f51676ab336b68e8127aad3b4d820b93",
+      "text_sha256": "fcb3d0ddee2b52ac7a2b4e946599f1e0177f5a789144a7e43cacd88bbec388eb"
     },
     {
       "name": "pikpak",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/pikpak.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/pikpak.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/pikpak.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 7,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 7,
+      "mrs_sha256": "1d985bb9ac2e7071e825138500294570b125a0163377bb8604920ab60c9c8e58",
+      "text_sha256": "78193acbfc12f2634c6d5e4428a9cb42809a2096d7b572ec2556a8dc7f90892d"
     },
     {
       "name": "spotify",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/spotify.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/spotify.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/spotify.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 28,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 28,
+      "mrs_sha256": "7eea9d7fd6521c91f2a80ac2fc44a1d541385678c29cf0f7384d954bc23175bc",
+      "text_sha256": "9446ee37899b244995f4b2a5e0f051eb6f35e611909d4a8275b303ac42be40a5"
     },
     {
       "name": "spotify_ip",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/spotify.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/spotify.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/spotify.mrs",
+      "format": "mrs",
+      "behavior": "ipcidr",
       "count": 7,
-      "mrs_insertion_count": null,
-      "behavior": "ipcidr"
+      "mrs_insertion_count": 7,
+      "mrs_sha256": "a4fde5b8a11a64dc9a12c2384d1d92e6b18a85847cabba982a2d83dce5b9d641",
+      "text_sha256": "8509d09356cf9ad0a96fca461ff6be980fc397373a701a9178a963cd10d613a6"
     },
     {
       "name": "cryptocurrency",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-cryptocurrency.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-cryptocurrency.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-cryptocurrency.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 235,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 235,
+      "mrs_sha256": "c09d8cb3f2c6248c0adadd311ce8e9a495b34a26a93ceaa88a1905c0a654c033",
+      "text_sha256": "7fdb995ad8c78f21cb0d48d753a0a058836a47ba6b78569491ecacf849b3f856"
     },
     {
       "name": "paypal",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/paypal.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/paypal.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/paypal.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 245,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 245,
+      "mrs_sha256": "280ee39cc3a7ce846b01818d0f2d07d847c19d70af23459de4c04fb6c89bf908",
+      "text_sha256": "ac510b7b50e0b97c8c4cfccaee2d580961a1e590d062d41eb8d43ab999313f61"
     },
     {
       "name": "patreon",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/patreon.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/patreon.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/patreon.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 4,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 4,
+      "mrs_sha256": "543458dbc61e075919c25038df85bc06bb2d26891c8b224f13a9132d0cd3e493",
+      "text_sha256": "559d0303b0eb2e9be0df31e89c6ceff288565dfaddc3e7e251cc7e7ed07e3b13"
     },
     {
       "name": "ehentai",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/ehentai.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/ehentai.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/ehentai.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 8,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 8,
+      "mrs_sha256": "e3f1f6972bd5afc4defb2708adf4c85aaa71eea789ae2cb90f751ae409988d88",
+      "text_sha256": "184ea8b2f2117cde715c765989687924fe8d010527b94f9ef94b1a0ffad428ce"
     },
     {
       "name": "geolocation-!cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-!cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-!cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-!cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 33461,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 33461,
+      "mrs_sha256": "1875a8f8350983b8a4aa9907e77c9953f832fcbc3678b03ae22929ab7e56d1ba",
+      "text_sha256": "770318f894f506ff4f21f219f807da35de4096fcec036ac494e2029d9ae1371a"
     },
     {
       "name": "category-ads",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ads.yaml",
-      "count": 1655,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-ads.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ads.mrs",
+      "format": "mrs",
+      "behavior": "domain",
+      "count": 1537,
+      "mrs_insertion_count": 1655,
+      "mrs_sha256": "bfc43ec3575b999924225557ad89e10dc6b875839273251ec66e4c68202957fa",
+      "text_sha256": "4086b5cdcbf54903fbd8a660b11633e4e08ff9a577e435420b92957ad0f01b5b"
     },
     {
       "name": "fakeip_filter",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/fakeip-filter.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/fakeip-filter.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/fakeip-filter.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 121,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 121,
+      "mrs_sha256": "9c208ea60b8cc13ef79867ed5010f9ebebd0505bc97e3cd983283ace9c583179",
+      "text_sha256": "bdec4622b2c698962b19794806d66685e70d2a040ec723a64966368998cd4ae9"
     },
     {
       "name": "cn_additional",
       "source": "https://static-file-global.353355.xyz/rules/cn-additional-list.mrs",
+      "fetch_url": "https://static-file-global.353355.xyz/rules/cn-additional-list.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 44546,
       "mrs_insertion_count": 44546,
-      "behavior": "domain"
+      "mrs_sha256": "f19b8a58a9fa30647158a79fdecfdde9a4aa66737120b27b065e57663f2265d2",
+      "text_sha256": "498142b61b436d44a85c491e9dfa3d69587a43db6866d1749efc28ab0491dbbd"
     },
     {
       "name": "cn",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/cn.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cn.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/cn.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 108858,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 108858,
+      "mrs_sha256": "3c63aaa3169f5c7cbe79e89ca0b8fbdfa0e86bc75245f49ebcee670e37e26e75",
+      "text_sha256": "8e3cb6d39372a5f62ba3754ceed751131976c0d3e84aad0bf13197a99888c233"
     },
     {
       "name": "douyin",
-      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/douyin.yaml",
+      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/douyin.mrs",
+      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/douyin.mrs",
+      "format": "mrs",
+      "behavior": "domain",
       "count": 71,
-      "mrs_insertion_count": null,
-      "behavior": "domain"
+      "mrs_insertion_count": 71,
+      "mrs_sha256": "6b226d6f237ade66549c9b2b613a238ba62bf1f1857f2804f4297d19418be222",
+      "text_sha256": "aab126b75023a460ec20d882358570b025f9e02efad213ce06b17213263c6255"
     }
   ],
+  "supplemental_sets": {
+    "nsfw": {
+      "source": "https://raw.githubusercontent.com/Yoobohl/proxy-profiles/main/rules/classical/nsfw.list",
+      "source_sha256": "f607fa003f5d107c3e2add934ee151b4a00709b487843b7a7c2df099a46e3919",
+      "supported_input_count": 60,
+      "skipped": [],
+      "input_count": 60,
+      "duplicate_count": 0,
+      "covered_count": 0,
+      "output_count": 60
+    },
+    "cryptocurrency": {
+      "source": "https://raw.githubusercontent.com/Yoobohl/proxy-profiles/main/rules/classical/web3.list",
+      "source_sha256": "014862816d5247ce541e36e6b455479f2dae58bfb336e5f8dfd0e1193c55204b",
+      "supported_input_count": 417,
+      "skipped": [
+        {
+          "line": 74,
+          "rule": "PROCESS-NAME,Binance.exe",
+          "reason": "No Egern process rule in official documentation"
+        },
+        {
+          "line": 107,
+          "rule": "PROCESS-NAME,Huobi.exe",
+          "reason": "No Egern process rule in official documentation"
+        },
+        {
+          "line": 115,
+          "rule": "PROCESS-NAME,OKX.exe",
+          "reason": "No Egern process rule in official documentation"
+        }
+      ],
+      "input_count": 652,
+      "duplicate_count": 222,
+      "covered_count": 4,
+      "output_count": 426,
+      "original_mrs_text_count": 235
+    }
+  },
   "skipped_process_rules": [
     "PROCESS-NAME,com.mb.android,Emby",
     "PROCESS-NAME,tv.emby.embyatv,Emby",
@@ -340,6 +567,6 @@
     "PROCESS-NAME,RodelPlayer.App.exe,Emby",
     "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
   ],
-  "routing_rule_count": 64,
+  "routing_rule_count": 65,
   "dns_forward_count": 4
 }

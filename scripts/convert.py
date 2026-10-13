@@ -1,20 +1,24 @@
-"""Build a self-contained Egern profile from the saved MyClash snapshot.
+"""Build an Egern profile and native rule sets from actual MRS snapshots.
 
 Run: uv run --with pyyaml --with zstandard python scripts/convert.py
-MRS decoding follows MetaCubeX/mihomo's mrs_reader.go and domain_set_bin.go.
+MRS is exported by the official mihomo v1.19.32 convert-ruleset command.
 """
 
 import argparse
-import ipaddress
 import json
-import re
-import struct
-from collections import deque
 from pathlib import Path
 from typing import Any
 
 import yaml
-import zstandard
+from classical_to_egern import add_supplemental_sets
+from mrs_to_egern import (
+    DEFAULT_MIHOMO,
+    VERSION,
+    check_version,
+    dump_mrs,
+    sha256,
+    write_native,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "source"
@@ -22,158 +26,63 @@ TEST_URL = "https://www.apple.com/library/test/success.html"
 RAW_BASE = "https://raw.githubusercontent.com/Yoobohl/EgernTest/main"
 
 
-def decode_mrs(path):
-    with path.open("rb") as stream:
-        data = zstandard.ZstdDecompressor().stream_reader(stream).read()
-    assert data[:5] == b"MRS\x01\x00", "Expected domain MRS v1"
-    count, extra = struct.unpack_from(">qq", data, 5)
-    offset = 21 + extra
-    assert data[offset] == 1, "Expected domain trie v1"
-    offset += 1
-    arrays = []
-    for _ in range(2):
-        length = struct.unpack_from(">q", data, offset)[0]
-        offset += 8
-        arrays.append(struct.unpack_from(f">{length}Q", data, offset))
-        offset += length * 8
-    length = struct.unpack_from(">q", data, offset)[0]
-    offset += 8
-    labels = data[offset : offset + length]
-    assert offset + length == len(data)
-    leaves, bitmap = arrays
-    queue = deque([b""])
-    node = bit = edge = 0
-    keys = []
-    while queue:
-        prefix = queue.popleft()
-        if (leaves[node // 64] >> (node % 64)) & 1:
-            key = prefix.decode("utf-8").removesuffix("+")[::-1]
-            keys.append(key)
-        while not ((bitmap[bit // 64] >> (bit % 64)) & 1):
-            queue.append(prefix + labels[edge : edge + 1])
-            edge += 1
-            bit += 1
-        bit += 1
-        node += 1
-    assert edge == len(labels)
-    # MRS count is insertion count; compact trie can deduplicate/expand entries.
-    assert count > 0 and keys
-    exact = {key for key in keys if not key.startswith(".")}
-    suffix = {key[1:] for key in keys if key.startswith(".")}
-    result = ["+." + key for key in sorted(exact & suffix)]
-    result += sorted(exact - suffix)
-    result += ["." + key for key in sorted(suffix - exact)]
-    return result, count
-
-
-def domain_pattern(domain):
-    """Translate Mihomo domain-provider label wildcards, with anchored boundaries."""
-    prefix = ""
-    if domain.startswith("+."):
-        prefix, domain = r"(?:[^.]+\.)*", domain[2:]
-    elif domain.startswith("."):
-        prefix, domain = r"(?:[^.]+\.)+", domain[1:]
-    return prefix + r"\.".join(
-        "[^.]+" if label == "*" else re.escape(label) for label in domain.split(".")
-    )
-
-
-def regexes(domains, size=200):
-    domains = list(dict.fromkeys(domains))
-    for start in range(0, len(domains), size):
-        yield (
-            "(?i)^(?:"
-            + "|".join(domain_pattern(d) for d in domains[start : start + size])
-            + ")$"
-        )
-
-
-def conditions(entries, behavior, no_resolve=False):
-    if behavior == "domain":
-        return [{"domain_regex": {"match": pattern}} for pattern in regexes(entries)]
-    result = []
-    for entry in entries:
-        network = ipaddress.ip_network(entry, strict=False)
-        value = {"match": str(network)}
-        if no_resolve:
-            value["no_resolve"] = True
-        result.append({"ip_cidr6" if network.version == 6 else "ip_cidr": value})
-    return result
-
-
 def rule(condition, policy):
     kind, value = next(iter(condition.items()))
     return {kind: {**value, "policy": policy}}
 
 
-def native_set(entries, behavior):
-    result = {}
-    for entry in entries:
-        if behavior == "ipcidr":
-            network = ipaddress.ip_network(entry, strict=False)
-            kind, value = (
-                ("ip_cidr6_set" if network.version == 6 else "ip_cidr_set"),
-                str(network),
-            )
-        elif entry.startswith("+.") and "*" not in entry:
-            kind, value = "domain_suffix_set", entry[2:]
-        elif not entry.startswith(".") and "*" not in entry:
-            kind, value = "domain_set", entry
-        else:
-            kind, value = "domain_regex_set", "(?i)^" + domain_pattern(entry) + "$"
-        result.setdefault(kind, []).append(value)
-    return result
-
-
-def build(raw_base=RAW_BASE):
+def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     src = yaml.safe_load((SOURCE / "mihomoConfig.yaml").read_text(encoding="utf-8"))
-    resources = json.loads((SOURCE / "rule-sources.json").read_text(encoding="utf-8"))
+    version_output = check_version(mihomo)
+    downloads = {
+        item["name"]: item
+        for item in json.loads(
+            (SOURCE / "mrs-downloads.json").read_text(encoding="utf-8")
+        )
+    }
     entries = {}
     manifest = []
-    for item in resources:
-        if item["name"] == "cn_additional":
-            payload, mrs_count = decode_mrs(SOURCE / "cn-additional-list.mrs")
-            url = src["rule-providers"]["cn_additional"]["url"]
-        else:
-            assert item["status"] == 200, item["name"]
-            if item["name"] == "emby":
-                payload = [
-                    line.strip()
-                    for line in item["text"].splitlines()
-                    if line.strip() and not line.startswith("#")
-                ]
-            else:
-                payload = yaml.safe_load(item["text"])["payload"]
-            url, mrs_count = item["url"], None
-        entries[item["name"]] = payload
+    for name, provider in src["rule-providers"].items():
+        mrs_path = SOURCE / "mrs" / (name + ".mrs")
+        text_path = SOURCE / "text" / (name + ".txt")
+        payload, behavior, mrs_count = dump_mrs(
+            mrs_path, text_path, mihomo, provider["behavior"]
+        )
+        entries[name] = payload
+        no_resolve = behavior == "ipcidr" and name not in {"cn_ip", "private_ip"}
+        write_native(
+            ROOT / "rulesets" / (name + ".yaml"), payload, behavior, no_resolve
+        )
         manifest.append(
             {
-                "name": item["name"],
-                "source": url,
+                "name": name,
+                "source": provider["url"],
+                "fetch_url": downloads.get(name, {}).get("fetch_url", provider["url"]),
+                "format": "mrs",
+                "behavior": behavior,
                 "count": len(payload),
                 "mrs_insertion_count": mrs_count,
-                "behavior": item["behavior"],
+                "mrs_sha256": sha256(mrs_path),
+                "text_sha256": sha256(text_path),
             }
         )
-        sets = ROOT / "rulesets"
-        sets.mkdir(exist_ok=True)
-        converted = native_set(payload, item["behavior"])
-        if item["behavior"] == "ipcidr" and item["name"] not in {"cn_ip", "private_ip"}:
-            converted = {"no_resolve": True, **converted}
-        (sets / (item["name"] + ".yaml")).write_text(
-            yaml.safe_dump(
-                converted,
-                allow_unicode=True,
-                sort_keys=False,
-                width=120,
-            ),
-            encoding="utf-8",
-        )
-    (ROOT / "rulesets/cn_ip-no-resolve.yaml").write_text(
-        yaml.safe_dump(
-            {"no_resolve": True, **native_set(entries["cn_ip"], "ipcidr")},
-            sort_keys=False,
-            width=120,
+    write_native(
+        ROOT / "rulesets/cn_ip-no-resolve.yaml", entries["cn_ip"], "ipcidr", True
+    )
+    supplemental = add_supplemental_sets(ROOT)
+    (SOURCE / "mrs-tool.json").write_text(
+        json.dumps(
+            {
+                "version": VERSION,
+                "version_output": version_output,
+                "source": "https://github.com/MetaCubeX/mihomo/blob/v1.19.32/rules/provider/mrs_converter.go",
+                "release_asset": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-windows-amd64-v1-v1.19.32.zip",
+                "release_sha256": "00549b347d8e124600e46cac67d59293358454f465e9d86d2511567da56b7029",
+                "executable_sha256": sha256(mihomo),
+                "command": "mihomo convert-ruleset <domain|ipcidr> mrs <source.mrs> <target.txt>",
+            },
+            ensure_ascii=False,
+            indent=2,
         ),
         encoding="utf-8",
     )
@@ -198,7 +107,7 @@ def build(raw_base=RAW_BASE):
         kind = {"url-test": "auto_test", "load-balance": "load_balance"}.get(
             original["type"], original["type"]
         )
-        group = {"name": original["name"]}
+        group: dict[str, Any] = {"name": original["name"]}
         policies = list(original.get("proxies", []))
         if original["name"] == "直连":
             policies = ["DIRECT"]
@@ -238,6 +147,8 @@ def build(raw_base=RAW_BASE):
         for field in ("icon", "hidden"):
             if field in original:
                 group[field] = original[field]
+        if group.get("icon", "").endswith(".svg"):
+            group["icon"] = f"{raw_base}/icons/{Path(group['icon']).stem}.png"
         if kind in ("auto_test", "load_balance"):
             group["interval"] = original["interval"]
             group["timeout"] = original["timeout"] // 1000
@@ -246,6 +157,16 @@ def build(raw_base=RAW_BASE):
         if kind == "load_balance":
             group["algorithm"] = "hash"
         groups.append({kind: group})
+
+    groups.append(
+        {
+            "select": {
+                "name": "NSFW",
+                "policies": list(src["proxies_common"]["proxies_default"]["proxies"]),
+                "icon": f"{raw_base}/icons/nsfw_diamond.png",
+            }
+        }
+    )
 
     forward = []
     for name, value in (("private", "system"), ("douyin", "douyin"), ("cn", "china")):
@@ -300,6 +221,7 @@ def build(raw_base=RAW_BASE):
         "proxies": [],
         "policy_groups": groups,
         "default_subscription_group": "机场订阅",
+        "default_proxy_group": "默认代理",
         "rules": [],
     }
     # Explicit DNS endpoint routing replaces Mihomo's '#policy' annotations.
@@ -351,7 +273,23 @@ def build(raw_base=RAW_BASE):
             )
         elif kind == "RULE-SET":
             name, policy = parts[1:3]
+            if name == "cryptocurrency":
+                # Its merged reference is inserted with NSFW before the general
+                # proxy service sets, so their domains cannot shadow these lists.
+                continue
             profile["rules"].append({"rule_set": {**reference(name), "policy": policy}})
+            if name == "category-ads":
+                profile["rules"].extend(
+                    [
+                        {"rule_set": {**reference("nsfw"), "policy": "NSFW"}},
+                        {
+                            "rule_set": {
+                                **reference("cryptocurrency"),
+                                "policy": "Crypto",
+                            }
+                        },
+                    ]
+                )
         elif kind == "MATCH":
             profile["rules"].append({"default": {"policy": parts[1]}})
         else:
@@ -417,6 +355,7 @@ def build(raw_base=RAW_BASE):
             {
                 "snapshot_date": "2026-10-13",
                 "resources": manifest,
+                "supplemental_sets": supplemental,
                 "skipped_process_rules": skipped,
                 "routing_rule_count": len(profile["rules"]),
                 "dns_forward_count": len(forward),
@@ -435,5 +374,6 @@ def build(raw_base=RAW_BASE):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raw-base", default=RAW_BASE)
+    parser.add_argument("--mihomo", type=Path, default=DEFAULT_MIHOMO)
     args = parser.parse_args()
-    build(args.raw_base.rstrip("/"))
+    build(args.raw_base.rstrip("/"), args.mihomo)

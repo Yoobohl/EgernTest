@@ -1,0 +1,324 @@
+[
+  {
+    "name": "private",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/private.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "private_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/private.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/private.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "games_cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-games@cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-games@cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "epicgames",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/epicgames.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/epicgames.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "nvidia_cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/nvidia@cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/nvidia@cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "apple_cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple@cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple@cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "microsoft_cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft@cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft@cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "geolocation-cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "cn_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "googlefcm",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/googlefcm.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/googlefcm.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "youtube",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/youtube.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/youtube.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "google",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/google.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/google.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "google_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/google.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/google.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "ai",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-ai-!cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ai-!cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "github",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/github.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/github.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "microsoft",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "microsoft_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/microsoft.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/microsoft.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "apple",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "apple_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/apple.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/apple.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "telegram",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/telegram.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "telegram_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/telegram.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/telegram.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "steam",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/steam.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/steam.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "steam_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/steam.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/steam.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "tiktok",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/tiktok.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/tiktok.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "tiktok_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/tiktok.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "twitter",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/twitter.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "twitter_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/twitter.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "meta",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/meta.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/meta.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "facebook_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/facebook.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/facebook.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "line",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/line.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/line.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "netflix",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/netflix.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/netflix.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "netflix_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/netflix.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/netflix.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "emby",
+    "url": "https://cdn.jsdmirror.com/gh/666OS/rules@release/mihomo/domain/Emby.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "emos",
+    "url": "https://cdn.jsdmirror.com/gh/binaryu/emos-proxy-rule@main/rules/emos-mihomo.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-mihomo.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "pikpak",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/pikpak.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/pikpak.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "spotify",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/spotify.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/spotify.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "spotify_ip",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/spotify.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/spotify.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "cryptocurrency",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-cryptocurrency.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-cryptocurrency.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "paypal",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/paypal.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/paypal.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "patreon",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/patreon.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/patreon.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "ehentai",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/ehentai.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/ehentai.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "geolocation-!cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-!cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-!cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "category-ads",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-ads.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ads.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "fakeip_filter",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/fakeip-filter.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/fakeip-filter.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "cn",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cn.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/cn.mrs",
+    "status": 200,
+    "error": null
+  },
+  {
+    "name": "douyin",
+    "url": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/douyin.mrs",
+    "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/douyin.mrs",
+    "status": 200,
+    "error": null
+  }
+]

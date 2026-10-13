@@ -1,15 +1,3 @@
-domain_set:
-- audio-ak-spotify-com.akamaized.net
-- audio4-ak-spotify-com.akamaized.net
-- cdn-spotify-experiments.conductrics.com
-- heads-ak-spotify-com.akamaized.net
-- heads4-ak-spotify-com.akamaized.net
-- spotify.com.edgesuite.net
-- spotify.map.fastly.net
-- spotify.map.fastlylb.net
-- adeventtracker.spotify.com
-- adstudio-assets.scdn.co
-- bloodhound.spotify.com
 domain_suffix_set:
 - byspotify.com
 - lifeatspotify.com
@@ -28,3 +16,15 @@ domain_suffix_set:
 - spotifyforvendors.com
 - spotifyjobs.com
 - tospotify.com
+domain_set:
+- adeventtracker.spotify.com
+- adstudio-assets.scdn.co
+- audio-ak-spotify-com.akamaized.net
+- audio4-ak-spotify-com.akamaized.net
+- bloodhound.spotify.com
+- cdn-spotify-experiments.conductrics.com
+- heads-ak-spotify-com.akamaized.net
+- heads4-ak-spotify-com.akamaized.net
+- spotify.com.edgesuite.net
+- spotify.map.fastly.net
+- spotify.map.fastlylb.net
