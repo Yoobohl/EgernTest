@@ -177,7 +177,7 @@ assert profile["vif_only"] is True
 assert profile["ipv6"] is False
 assert "block_quic" not in profile
 assert profile["compat_route"] is True
-assert profile["http_port"] == 7890 and profile["socks_port"] == 7891
+assert "http_port" not in profile and "socks_port" not in profile
 assert groups["NSFW"]["icon"] == RAW_BASE + "/icons/nsfw_diamond.png"
 
 resources = json.loads((root / "source/manifest.json").read_text(encoding="utf-8"))[
