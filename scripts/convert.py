@@ -182,7 +182,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             else:
                 real_ip.append(domain)
     profile: dict[str, Any] = {
-        "ipv6": True,
+        "ipv6": False,
         "http_port": 7890,
         "socks_port": 7891,
         "allow_external_connections": True,
