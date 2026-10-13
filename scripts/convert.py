@@ -186,6 +186,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         "http_port": 7890,
         "socks_port": 7891,
         "allow_external_connections": True,
+        "vif_only": True,
         "hijack_dns": ["*"],
         "block_quic": False,
         "proxy_latency_test_url": TEST_URL,
