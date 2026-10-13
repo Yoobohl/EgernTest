@@ -48,19 +48,19 @@ policy_groups:
     - 自动选择
     - 负载均衡
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Proxy.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Proxy.png
 - select:
     name: 手动选择
     flatten: true
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Static.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Static.png
 - auto_test:
     name: 自动选择
     flatten: true
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -70,7 +70,7 @@ policy_groups:
     flatten: true
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/RoundRobin.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/RoundRobin.png
     hidden: true
     interval: 600
     timeout: 3
@@ -91,7 +91,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Fcm.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Fcm.png
 - select:
     name: YouTube
     policies:
@@ -107,7 +107,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/YouTube.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/YouTube.png
 - select:
     name: Google
     policies:
@@ -123,7 +123,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Google.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Google.png
 - select:
     name: AI
     policies:
@@ -139,7 +139,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/OpenAI.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/OpenAI.png
 - select:
     name: Microsoft
     policies:
@@ -156,7 +156,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Microsoft.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Microsoft.png
 - select:
     name: Apple
     policies:
@@ -173,7 +173,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Apple.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Apple.png
 - select:
     name: Telegram
     policies:
@@ -189,7 +189,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Telegram.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Telegram.png
 - select:
     name: Steam
     policies:
@@ -206,7 +206,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Steam.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Steam.png
 - select:
     name: TikTok
     policies:
@@ -222,7 +222,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/TikTok.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/TikTok.png
 - select:
     name: Twitter
     policies:
@@ -238,7 +238,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Twitter.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Twitter.png
 - select:
     name: Meta
     policies:
@@ -254,7 +254,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Meta.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Meta.png
 - select:
     name: Line
     policies:
@@ -270,7 +270,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Line.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Line.png
 - select:
     name: Netflix
     policies:
@@ -286,7 +286,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Netflix.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Netflix.png
 - select:
     name: Emby
     policies:
@@ -303,7 +303,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Emby.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Emby.png
 - select:
     name: PikPak
     policies:
@@ -320,7 +320,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/PikPak.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/PikPak.png
 - select:
     name: Spotify
     policies:
@@ -337,7 +337,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Spotify.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Spotify.png
 - select:
     name: Crypto
     policies:
@@ -353,7 +353,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Bitcoin.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Bitcoin.png
 - select:
     name: PayPal
     policies:
@@ -369,7 +369,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/PayPal.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/PayPal.png
 - select:
     name: Patreon
     policies:
@@ -385,7 +385,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Patreon.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Patreon.png
 - select:
     name: EHentai
     policies:
@@ -402,23 +402,23 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/EHentai.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/EHentai.png
 - select:
     name: AdBlock
     policies:
     - REJECT
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/AdBlock.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/AdBlock.png
 - select:
     name: 漏网之鱼
     policies:
     - 默认代理
     - 直连
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Stack.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Stack.png
 - select:
     name: 直连
     policies:
     - DIRECT
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/China.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/China.png
 - select:
     name: 香港
     urls: *subscriptions
@@ -426,14 +426,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)).*$
     policies:
     - 香港-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/HongKong.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/HongKong.png
 - auto_test:
     name: 香港-自动选择
     flatten: true
     filter: (?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -445,14 +445,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)).*$
     policies:
     - 日本-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Japan.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Japan.png
 - auto_test:
     name: 日本-自动选择
     flatten: true
     filter: (?i)(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -464,14 +464,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)).*$
     policies:
     - 美国-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/America.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/America.png
 - auto_test:
     name: 美国-自动选择
     flatten: true
     filter: (?i)(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -483,14 +483,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)).*$
     policies:
     - 新加坡-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Singapore.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Singapore.png
 - auto_test:
     name: 新加坡-自动选择
     flatten: true
     filter: (?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -502,14 +502,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     policies:
     - 台湾-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Taiwan.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Taiwan.png
 - auto_test:
     name: 台湾-自动选择
     flatten: true
     filter: (?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -521,14 +521,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))).*$
     policies:
     - 低倍率节点-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Available.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Available.png
 - auto_test:
     name: 低倍率节点-自动选择
     flatten: true
     filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -540,14 +540,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))).*$
     policies:
     - 高倍率节点-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Airport.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Airport.png
 - auto_test:
     name: 高倍率节点-自动选择
     flatten: true
     filter: (?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -559,14 +559,14 @@ policy_groups:
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     policies:
     - 其他节点-自动选择
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/WorldMap.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/WorldMap.png
 - auto_test:
     name: 其他节点-自动选择
     flatten: true
     filter: (?i)^(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     policies:
     - 机场订阅
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/Auto.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
     timeout: 3
@@ -586,7 +586,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/icons/nsfw_diamond.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/nsfw_diamond.png
 default_subscription_group: 机场订阅
 ipv6: true
 http_port: 7890
@@ -599,7 +599,7 @@ proxy_latency_test_url: https://www.apple.com/library/test/success.html
 direct_latency_test_url: https://www.apple.com/library/test/success.html
 modules:
 - name: MyClash Real IP Domains
-  url: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/modules/real-ip-domains.yaml
+  url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/real-ip-domains.yaml
   update_interval: 86400
   enabled: true
 dns:
@@ -618,15 +618,15 @@ dns:
     - https://dns.google/dns-query
   forward:
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private.yaml
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
       update_interval: 86400
       value: system
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/douyin.yaml
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/douyin.yaml
       update_interval: 86400
       value: douyin
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn.yaml
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn.yaml
       update_interval: 86400
       value: china
   - domain_wildcard:
@@ -712,31 +712,31 @@ rules:
     no_resolve: true
     policy: DIRECT
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/geolocation-cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/geolocation-cn.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/games_cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/games_cn.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/epicgames.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/epicgames.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/nvidia_cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nvidia_cn.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple_cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple_cn.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft_cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft_cn.yaml
     update_interval: 86400
     policy: 直连
 - domain:
@@ -756,122 +756,122 @@ rules:
           or:
             match:
             - rule_set:
-                match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_additional.yaml
+                match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn_additional.yaml
                 update_interval: 86400
             - rule_set:
-                match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_ip-no-resolve.yaml
+                match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn_ip-no-resolve.yaml
                 update_interval: 86400
     policy: REJECT
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/category-ads.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/category-ads.yaml
     update_interval: 86400
     policy: AdBlock
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/nsfw.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nsfw.yaml
     update_interval: 86400
     policy: NSFW
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cryptocurrency.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cryptocurrency.yaml
     update_interval: 86400
     policy: Crypto
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/googlefcm.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/googlefcm.yaml
     update_interval: 86400
     policy: FCM
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/youtube.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/youtube.yaml
     update_interval: 86400
     policy: YouTube
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/google.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/google.yaml
     update_interval: 86400
     policy: Google
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/google_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/google_ip.yaml
     update_interval: 86400
     policy: Google
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/ai.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/ai.yaml
     update_interval: 86400
     policy: AI
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/github.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/github.yaml
     update_interval: 86400
     policy: 默认代理
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft.yaml
     update_interval: 86400
     policy: Microsoft
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft_ip.yaml
     update_interval: 86400
     policy: Microsoft
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple.yaml
     update_interval: 86400
     policy: Apple
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple_ip.yaml
     update_interval: 86400
     policy: Apple
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/telegram.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/telegram.yaml
     update_interval: 86400
     policy: Telegram
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/telegram_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/telegram_ip.yaml
     update_interval: 86400
     policy: Telegram
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/steam.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/steam.yaml
     update_interval: 86400
     policy: Steam
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/steam_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/steam_ip.yaml
     update_interval: 86400
     policy: Steam
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/tiktok.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/tiktok.yaml
     update_interval: 86400
     policy: TikTok
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/tiktok_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/tiktok_ip.yaml
     update_interval: 86400
     policy: TikTok
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/twitter.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/twitter.yaml
     update_interval: 86400
     policy: Twitter
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/twitter_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/twitter_ip.yaml
     update_interval: 86400
     policy: Twitter
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/meta.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/meta.yaml
     update_interval: 86400
     policy: Meta
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/facebook_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/facebook_ip.yaml
     update_interval: 86400
     policy: Meta
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/line.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/line.yaml
     update_interval: 86400
     policy: Line
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/netflix.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/netflix.yaml
     update_interval: 86400
     policy: Netflix
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/netflix_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/netflix_ip.yaml
     update_interval: 86400
     policy: Netflix
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/emby.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/emby.yaml
     update_interval: 86400
     policy: Emby
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/emos.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/emos.yaml
     update_interval: 86400
     policy: Emby
 - domain_suffix:
@@ -884,39 +884,39 @@ rules:
     match: emby
     policy: Emby
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/pikpak.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/pikpak.yaml
     update_interval: 86400
     policy: PikPak
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/spotify.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/spotify.yaml
     update_interval: 86400
     policy: Spotify
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/spotify_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/spotify_ip.yaml
     update_interval: 86400
     policy: Spotify
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/paypal.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/paypal.yaml
     update_interval: 86400
     policy: PayPal
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/patreon.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/patreon.yaml
     update_interval: 86400
     policy: Patreon
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/ehentai.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/ehentai.yaml
     update_interval: 86400
     policy: EHentai
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/geolocation-!cn.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/geolocation-!cn.yaml
     update_interval: 86400
     policy: 默认代理
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn_ip.yaml
     update_interval: 86400
     policy: 直连
 - rule_set:
-    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private_ip.yaml
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private_ip.yaml
     update_interval: 86400
     policy: 直连
 - default:

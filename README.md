@@ -6,7 +6,7 @@
 
 ## 导入
 
-配置地址：<https://raw.githubusercontent.com/Yoobohl/EgernTest/main/Profile.yaml>
+配置地址：<https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/Profile.yaml>
 
 下载 `Profile.yaml`，在开头的 `机场订阅` 组填写订阅，再导入 Egern：
 
@@ -103,7 +103,7 @@ uv run --with pyyaml --with zstandard python scripts/convert.py
 uv run --with pyyaml --with zstandard --with pcre2 --with pillow python scripts/validate.py
 ```
 
-转换脚本支持 `--raw-base` 修改托管前缀，默认 `https://raw.githubusercontent.com/Yoobohl/EgernTest/main`；支持 `--mihomo` 指定其他位置的同版本官方可执行文件。
+转换脚本支持 `--raw-base` 修改托管前缀，默认 `https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main`；支持 `--mihomo` 指定其他位置的同版本官方可执行文件。
 
 单个 MRS 可使用通用转换入口，行为自动从 MRS 头读取：
 

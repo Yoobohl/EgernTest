@@ -23,7 +23,7 @@ from mrs_to_egern import (
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "source"
 TEST_URL = "https://www.apple.com/library/test/success.html"
-RAW_BASE = "https://raw.githubusercontent.com/Yoobohl/EgernTest/main"
+RAW_BASE = "https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main"
 
 
 def rule(condition, policy):
