@@ -104,11 +104,17 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         }
     ]
     for original in src["proxy-groups"]:
+        if original["name"].endswith("-自动选择"):
+            continue
         kind = {"url-test": "auto_test", "load-balance": "load_balance"}.get(
             original["type"], original["type"]
         )
         group: dict[str, Any] = {"name": original["name"]}
-        policies = list(original.get("proxies", []))
+        policies = [
+            name
+            for name in original.get("proxies", [])
+            if not name.endswith("-自动选择")
+        ]
         if original["name"] == "直连":
             policies = ["DIRECT"]
         elif original["name"] == "AdBlock":
@@ -119,8 +125,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             policies.remove(initial)
             policies.insert(0, initial)
         if original.get("include-all"):
-            # Keep the automatic sub-policy while mounting subscription nodes.
-            if kind == "select" and policies:
+            # Region manual groups mount nodes directly, without automatic subgroups.
+            if kind == "select" and original.get("proxies"):
                 filt = original.get("filter")
                 neg = original.get("exclude-filter")
                 group["urls"] = []

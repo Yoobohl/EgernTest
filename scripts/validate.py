@@ -46,6 +46,22 @@ def visit(name, active):
 
 for name in groups:
     visit(name, set())
+assert not any(name.endswith("-自动选择") for name in groups)
+assert [
+    next(iter(g.values()))["name"] for g in profile["policy_groups"] if "auto_test" in g
+] == ["自动选择"]
+for name in (
+    "香港",
+    "日本",
+    "美国",
+    "新加坡",
+    "台湾",
+    "低倍率节点",
+    "高倍率节点",
+    "其他节点",
+):
+    assert "policies" not in groups[name]
+    assert groups[name]["urls"] is groups["机场订阅"]["urls"]
 
 sets = {}
 count = 0
