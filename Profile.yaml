@@ -1,0 +1,902 @@
+# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
+# 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
+# 填写下方 urls 的机场订阅。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
+# 示例：将 urls: &subscriptions [] 改为 urls: &subscriptions ["你的订阅地址"]。
+# 所有地区手动组共用此 URL 列表；请勿删除 &subscriptions / *subscriptions。
+# 分流规则集和 Real IP 模块从 Yoobohl/EgernTest 加载，每 86400 秒更新。
+# 尚未在 iOS Egern 内运行验证。
+# 原配置许可：
+# MIT License
+# 
+# Copyright (c) 2026 AIsouler
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+policy_groups:
+- select:
+    name: 机场订阅
+    urls: &subscriptions []
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b)).*$
+    hidden: true
+- select:
+    name: 默认代理
+    policies:
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Proxy.svg
+- select:
+    name: 手动选择
+    flatten: true
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Static.svg
+- auto_test:
+    name: 自动选择
+    flatten: true
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- load_balance:
+    name: 负载均衡
+    flatten: true
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/RoundRobin.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    algorithm: hash
+- select:
+    name: FCM
+    policies:
+    - 直连
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Fcm.svg
+- select:
+    name: YouTube
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/YouTube.svg
+- select:
+    name: Google
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Google.svg
+- select:
+    name: AI
+    policies:
+    - 美国
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/OpenAI.svg
+- select:
+    name: Microsoft
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Microsoft.svg
+- select:
+    name: Apple
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Apple.svg
+- select:
+    name: Telegram
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Telegram.svg
+- select:
+    name: Steam
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Steam.svg
+- select:
+    name: TikTok
+    policies:
+    - 日本
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/TikTok.svg
+- select:
+    name: Twitter
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Twitter.svg
+- select:
+    name: Meta
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Meta.svg
+- select:
+    name: Line
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Line.svg
+- select:
+    name: Netflix
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Netflix.svg
+- select:
+    name: Emby
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Emby.svg
+- select:
+    name: PikPak
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/PikPak.svg
+- select:
+    name: Spotify
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Spotify.svg
+- select:
+    name: Crypto
+    policies:
+    - 日本
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Bitcoin.svg
+- select:
+    name: PayPal
+    policies:
+    - 美国
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/PayPal.svg
+- select:
+    name: Patreon
+    policies:
+    - 香港
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Patreon.svg
+- select:
+    name: EHentai
+    policies:
+    - 美国
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 直连
+    - 香港
+    - 日本
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/EHentai.svg
+- select:
+    name: AdBlock
+    policies:
+    - REJECT
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/AdBlock.svg
+- select:
+    name: 漏网之鱼
+    policies:
+    - 默认代理
+    - 直连
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Stack.svg
+- select:
+    name: 直连
+    policies:
+    - DIRECT
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/China.svg
+- select:
+    name: 香港
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)).*$
+    policies:
+    - 香港-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/HongKong.svg
+- auto_test:
+    name: 香港-自动选择
+    flatten: true
+    filter: (?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 日本
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)).*$
+    policies:
+    - 日本-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Japan.svg
+- auto_test:
+    name: 日本-自动选择
+    flatten: true
+    filter: (?i)(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 美国
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)).*$
+    policies:
+    - 美国-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/America.svg
+- auto_test:
+    name: 美国-自动选择
+    flatten: true
+    filter: (?i)(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 新加坡
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)).*$
+    policies:
+    - 新加坡-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Singapore.svg
+- auto_test:
+    name: 新加坡-自动选择
+    flatten: true
+    filter: (?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 台湾
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    policies:
+    - 台湾-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Taiwan.svg
+- auto_test:
+    name: 台湾-自动选择
+    flatten: true
+    filter: (?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 低倍率节点
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))).*$
+    policies:
+    - 低倍率节点-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Available.svg
+- auto_test:
+    name: 低倍率节点-自动选择
+    flatten: true
+    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 高倍率节点
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))).*$
+    policies:
+    - 高倍率节点-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Airport.svg
+- auto_test:
+    name: 高倍率节点-自动选择
+    flatten: true
+    filter: (?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+- select:
+    name: 其他节点
+    urls: *subscriptions
+    update_interval: 86400
+    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    policies:
+    - 其他节点-自动选择
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/WorldMap.svg
+- auto_test:
+    name: 其他节点-自动选择
+    flatten: true
+    filter: (?i)^(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    policies:
+    - 机场订阅
+    icon: https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Auto.svg
+    hidden: true
+    interval: 600
+    timeout: 3
+    tolerance: 50
+default_subscription_group: 机场订阅
+ipv6: true
+http_port: 7890
+socks_port: 7891
+allow_external_connections: true
+hijack_dns:
+- '*'
+block_quic: false
+proxy_latency_test_url: https://www.apple.com/library/test/success.html
+direct_latency_test_url: https://www.apple.com/library/test/success.html
+modules:
+- name: MyClash Real IP Domains
+  url: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/modules/real-ip-domains.yaml
+  update_interval: 86400
+  enabled: true
+dns:
+  bootstrap:
+  - 114.114.114.114
+  upstreams:
+    china:
+    - 223.5.5.5
+    - 119.29.29.29
+    douyin:
+    - system
+    - 180.184.1.1
+    - 180.184.2.2
+    foreign:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  forward:
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private.yaml
+      update_interval: 86400
+      value: system
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/douyin.yaml
+      update_interval: 86400
+      value: douyin
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn.yaml
+      update_interval: 86400
+      value: china
+  - domain_wildcard:
+      match: '*'
+      value: foreign
+  hosts:
+    doh.pub:
+    - 1.12.12.12
+    - 120.53.53.53
+    cloudflare-dns.com:
+    - 1.1.1.1
+    - 1.0.0.1
+    dns.google:
+    - 8.8.8.8
+    - 8.8.4.4
+    services.googleapis.cn: services.googleapis.com
+    mcdn.bilivideo.com: &id002
+    - 0.0.0.0
+    '*.mcdn.bilivideo.com': *id002
+    mcdn.bilivideo.cn: &id003
+    - 0.0.0.0
+    '*.mcdn.bilivideo.cn': *id003
+    edge.mountaintoys.cn: &id004
+    - 0.0.0.0
+    '*.edge.mountaintoys.cn': *id004
+    h2.smtcdns.net: &id005
+    - 0.0.0.0
+    '*.h2.smtcdns.net': *id005
+proxies: []
+rules:
+- domain:
+    match: cloudflare-dns.com
+    policy: 默认代理
+- domain:
+    match: dns.google
+    policy: 默认代理
+- ip_cidr:
+    match: 1.1.1.1/32
+    no_resolve: true
+    policy: 默认代理
+- ip_cidr:
+    match: 1.0.0.1/32
+    no_resolve: true
+    policy: 默认代理
+- ip_cidr:
+    match: 8.8.8.8/32
+    no_resolve: true
+    policy: 默认代理
+- ip_cidr:
+    match: 8.8.4.4/32
+    no_resolve: true
+    policy: 默认代理
+- domain:
+    match: doh.pub
+    policy: DIRECT
+- ip_cidr:
+    match: 114.114.114.114/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 223.5.5.5/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 119.29.29.29/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 1.12.12.12/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 120.53.53.53/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 180.184.1.1/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 180.184.2.2/32
+    no_resolve: true
+    policy: DIRECT
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/geolocation-cn.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/games_cn.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/epicgames.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/nvidia_cn.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple_cn.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft_cn.yaml
+    update_interval: 86400
+    policy: 直连
+- domain:
+    match: fsend.cn
+    policy: 直连
+- domain:
+    match: international-gfe.download.nvidia.com
+    policy: 直连
+- and:
+    match:
+    - protocol:
+        match: udp
+    - dest_port:
+        match: '443'
+    - not:
+        match:
+          or:
+            match:
+            - rule_set:
+                match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_additional.yaml
+                update_interval: 86400
+            - rule_set:
+                match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_ip-no-resolve.yaml
+                update_interval: 86400
+    policy: REJECT
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/category-ads.yaml
+    update_interval: 86400
+    policy: AdBlock
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/googlefcm.yaml
+    update_interval: 86400
+    policy: FCM
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/youtube.yaml
+    update_interval: 86400
+    policy: YouTube
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/google.yaml
+    update_interval: 86400
+    policy: Google
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/google_ip.yaml
+    update_interval: 86400
+    policy: Google
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/ai.yaml
+    update_interval: 86400
+    policy: AI
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/github.yaml
+    update_interval: 86400
+    policy: 默认代理
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft.yaml
+    update_interval: 86400
+    policy: Microsoft
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/microsoft_ip.yaml
+    update_interval: 86400
+    policy: Microsoft
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple.yaml
+    update_interval: 86400
+    policy: Apple
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/apple_ip.yaml
+    update_interval: 86400
+    policy: Apple
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/telegram.yaml
+    update_interval: 86400
+    policy: Telegram
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/telegram_ip.yaml
+    update_interval: 86400
+    policy: Telegram
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/steam.yaml
+    update_interval: 86400
+    policy: Steam
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/steam_ip.yaml
+    update_interval: 86400
+    policy: Steam
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/tiktok.yaml
+    update_interval: 86400
+    policy: TikTok
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/tiktok_ip.yaml
+    update_interval: 86400
+    policy: TikTok
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/twitter.yaml
+    update_interval: 86400
+    policy: Twitter
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/twitter_ip.yaml
+    update_interval: 86400
+    policy: Twitter
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/meta.yaml
+    update_interval: 86400
+    policy: Meta
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/facebook_ip.yaml
+    update_interval: 86400
+    policy: Meta
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/line.yaml
+    update_interval: 86400
+    policy: Line
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/netflix.yaml
+    update_interval: 86400
+    policy: Netflix
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/netflix_ip.yaml
+    update_interval: 86400
+    policy: Netflix
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/emby.yaml
+    update_interval: 86400
+    policy: Emby
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/emos.yaml
+    update_interval: 86400
+    policy: Emby
+- domain_suffix:
+    match: mb3admin.com
+    policy: Emby
+- domain_suffix:
+    match: nubebelle.com
+    policy: Emby
+- domain_keyword:
+    match: emby
+    policy: Emby
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/pikpak.yaml
+    update_interval: 86400
+    policy: PikPak
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/spotify.yaml
+    update_interval: 86400
+    policy: Spotify
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/spotify_ip.yaml
+    update_interval: 86400
+    policy: Spotify
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cryptocurrency.yaml
+    update_interval: 86400
+    policy: Crypto
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/paypal.yaml
+    update_interval: 86400
+    policy: PayPal
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/patreon.yaml
+    update_interval: 86400
+    policy: Patreon
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/ehentai.yaml
+    update_interval: 86400
+    policy: EHentai
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/geolocation-!cn.yaml
+    update_interval: 86400
+    policy: 默认代理
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/cn_ip.yaml
+    update_interval: 86400
+    policy: 直连
+- rule_set:
+    match: https://raw.githubusercontent.com/Yoobohl/EgernTest/main/rulesets/private_ip.yaml
+    update_interval: 86400
+    policy: 直连
+- default:
+    policy: 漏网之鱼

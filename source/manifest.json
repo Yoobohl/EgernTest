@@ -1,0 +1,345 @@
+{
+  "snapshot_date": "2026-10-13",
+  "resources": [
+    {
+      "name": "private",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/private.yaml",
+      "count": 130,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "private_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/private.yaml",
+      "count": 18,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "games_cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-games@cn.yaml",
+      "count": 37,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "epicgames",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/epicgames.yaml",
+      "count": 30,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "nvidia_cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/nvidia@cn.yaml",
+      "count": 4,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "apple_cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple@cn.yaml",
+      "count": 296,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "microsoft_cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft@cn.yaml",
+      "count": 189,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "geolocation-cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-cn.yaml",
+      "count": 5421,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "cn_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/cn.yaml",
+      "count": 10014,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "googlefcm",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/googlefcm.yaml",
+      "count": 12,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "youtube",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/youtube.yaml",
+      "count": 178,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "google",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/google.yaml",
+      "count": 1075,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "google_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/google.yaml",
+      "count": 933,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "ai",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ai-!cn.yaml",
+      "count": 189,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "github",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/github.yaml",
+      "count": 65,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "microsoft",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/microsoft.yaml",
+      "count": 749,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "microsoft_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/microsoft.yaml",
+      "count": 1084,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "apple",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/apple.yaml",
+      "count": 1792,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "apple_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/apple.yaml",
+      "count": 25,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "telegram",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/telegram.yaml",
+      "count": 21,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "telegram_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/telegram.yaml",
+      "count": 12,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "steam",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/steam.yaml",
+      "count": 60,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "steam_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/steam.yaml",
+      "count": 24,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "tiktok",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/tiktok.yaml",
+      "count": 37,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "tiktok_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/tiktok.yaml",
+      "count": 39,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "twitter",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/twitter.yaml",
+      "count": 24,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "twitter_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/twitter.yaml",
+      "count": 21,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "meta",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/meta.yaml",
+      "count": 555,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "facebook_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/facebook.yaml",
+      "count": 82,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "line",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/line.yaml",
+      "count": 20,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "netflix",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/netflix.yaml",
+      "count": 24,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "netflix_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/netflix.yaml",
+      "count": 61,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "emby",
+      "source": "https://raw.githubusercontent.com/666OS/rules/release/mihomo/domain/Emby.txt",
+      "count": 218,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "emos",
+      "source": "https://raw.githubusercontent.com/binaryu/emos-proxy-rule/main/rules/emos-mihomo.yaml",
+      "count": 42,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "pikpak",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/pikpak.yaml",
+      "count": 7,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "spotify",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/spotify.yaml",
+      "count": 28,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "spotify_ip",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geoip/spotify.yaml",
+      "count": 7,
+      "mrs_insertion_count": null,
+      "behavior": "ipcidr"
+    },
+    {
+      "name": "cryptocurrency",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-cryptocurrency.yaml",
+      "count": 235,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "paypal",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/paypal.yaml",
+      "count": 245,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "patreon",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/patreon.yaml",
+      "count": 4,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "ehentai",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/ehentai.yaml",
+      "count": 8,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "geolocation-!cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/geolocation-!cn.yaml",
+      "count": 33461,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "category-ads",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/category-ads.yaml",
+      "count": 1655,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "fakeip_filter",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/fakeip-filter.yaml",
+      "count": 121,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "cn_additional",
+      "source": "https://static-file-global.353355.xyz/rules/cn-additional-list.mrs",
+      "count": 44546,
+      "mrs_insertion_count": 44546,
+      "behavior": "domain"
+    },
+    {
+      "name": "cn",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/cn.yaml",
+      "count": 108858,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    },
+    {
+      "name": "douyin",
+      "source": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/douyin.yaml",
+      "count": 71,
+      "mrs_insertion_count": null,
+      "behavior": "domain"
+    }
+  ],
+  "skipped_process_rules": [
+    "PROCESS-NAME,com.mb.android,Emby",
+    "PROCESS-NAME,tv.emby.embyatv,Emby",
+    "PROCESS-NAME,com.hush.yamby,Emby",
+    "PROCESS-NAME,com.jellycine.app,Emby",
+    "PROCESS-NAME,com.mountains.hills,Emby",
+    "PROCESS-NAME,RodelPlayer.App.exe,Emby",
+    "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
+  ],
+  "routing_rule_count": 64,
+  "dns_forward_count": 4
+}
