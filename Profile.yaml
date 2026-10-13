@@ -499,7 +499,7 @@ allow_external_connections: true
 vif_only: true
 hijack_dns:
 - '*'
-block_quic: false
+compat_route: true
 proxy_latency_test_url: https://www.apple.com/library/test/success.html
 direct_latency_test_url: https://www.apple.com/library/test/success.html
 modules:

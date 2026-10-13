@@ -71,6 +71,8 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 全局设置 `default_proxy_group: 全部节点` 和 `default_subscription_group: 全部节点`，添加节点和订阅时统一使用该组。
 
+开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；HTTP 7890 / SOCKS 7891 端口保持不变。
+
 规则集、模块和订阅均设置 86400 秒更新。规则更新表示 Egern 重新读取本仓库文件；**不会自动把上游 mihomo/MRS 的新内容转换并提交到本仓库**。更新上游快照后重运行转换、检查并提交才会改变托管内容。
 
 ## 差异

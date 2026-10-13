@@ -188,7 +188,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         "allow_external_connections": True,
         "vif_only": True,
         "hijack_dns": ["*"],
-        "block_quic": False,
+        "compat_route": True,
         "proxy_latency_test_url": TEST_URL,
         "direct_latency_test_url": TEST_URL,
         "modules": [

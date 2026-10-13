@@ -175,6 +175,9 @@ assert profile["proxy_latency_test_url"] == profile["direct_latency_test_url"]
 assert profile["default_proxy_group"] == "全部节点"
 assert profile["vif_only"] is True
 assert profile["ipv6"] is False
+assert "block_quic" not in profile
+assert profile["compat_route"] is True
+assert profile["http_port"] == 7890 and profile["socks_port"] == 7891
 assert groups["NSFW"]["icon"] == RAW_BASE + "/icons/nsfw_diamond.png"
 
 resources = json.loads((root / "source/manifest.json").read_text(encoding="utf-8"))[
