@@ -69,7 +69,7 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 图标由原 SVG 使用 `@resvg/resvg-js@2.6.2` 渲染为 PNG，透明画布不填充底色。全部 PNG 为 8-bit RGBA，Alpha 最小值 0、最大值 255，图形颜色和原有背景形状保持原样。Profile 不再引用 SVG；NSFW 使用 [nsfw_diamond.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/nsfw_diamond.svg) 转换出的 `icons/nsfw_diamond.png`。
 
-全局设置 `default_proxy_group: 默认代理`，添加自定义节点时使用该组。
+全局设置 `default_proxy_group: 机场订阅`，添加自定义节点时使用该组。
 
 规则集、模块和订阅均设置 86400 秒更新。规则更新表示 Egern 重新读取本仓库文件；**不会自动把上游 mihomo/MRS 的新内容转换并提交到本仓库**。更新上游快照后重运行转换、检查并提交才会改变托管内容。
 

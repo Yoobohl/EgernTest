@@ -227,7 +227,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         "proxies": [],
         "policy_groups": groups,
         "default_subscription_group": "机场订阅",
-        "default_proxy_group": "默认代理",
+        "default_proxy_group": "机场订阅",
         "rules": [],
     }
     # Explicit DNS endpoint routing replaces Mihomo's '#policy' annotations.

@@ -171,7 +171,7 @@ module = yaml.safe_load(
 assert module["real_ip_domains"] and "real_ip_domains" not in profile
 assert "proxy_nameservers" not in profile["dns"]
 assert profile["proxy_latency_test_url"] == profile["direct_latency_test_url"]
-assert profile["default_proxy_group"] == "默认代理"
+assert profile["default_proxy_group"] == "机场订阅"
 assert groups["NSFW"]["icon"] == RAW_BASE + "/icons/nsfw_diamond.png"
 
 resources = json.loads((root / "source/manifest.json").read_text(encoding="utf-8"))[

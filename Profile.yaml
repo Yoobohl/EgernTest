@@ -552,7 +552,7 @@ dns:
     - 0.0.0.0
     '*.h2.smtcdns.net': *id005
 proxies: []
-default_proxy_group: 默认代理
+default_proxy_group: 机场订阅
 rules:
 - domain:
     match: cloudflare-dns.com
