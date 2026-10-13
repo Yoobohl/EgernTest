@@ -8,20 +8,20 @@
 
 配置地址：<https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/Profile.yaml>
 
-下载 `Profile.yaml`，在开头的 `机场订阅` 组填写订阅，再导入 Egern：
+下载 `Profile.yaml`，在开头的 `全部节点` 组填写订阅，再导入 Egern：
 
 ```yaml
-urls: &subscriptions
+urls:
   - "你的机场订阅地址"
 ```
 
-多个订阅继续添加列表项。保留 `&subscriptions` 和地区手动组中的 `*subscriptions`，只需填写一次。不要将私人订阅地址提交到公开仓库。订阅须为 Egern 支持的格式；官方明确展示的是 Egern 原生 `proxies:` YAML，不能保证直接接受机场提供的 mihomo YAML，必要时使用机场的 Egern 专用订阅。
+多个订阅继续添加列表项，只需在 `全部节点` 填写一次。地区及倍率策略组设置 `flatten: true`，通过 `policies: [全部节点]` 引用该组并筛选节点。不要将私人订阅地址提交到公开仓库。订阅须为 Egern 支持的格式；官方明确展示的是 Egern 原生 `proxies:` YAML，不能保证直接接受机场提供的 mihomo YAML，必要时使用机场的 Egern 专用订阅。
 
 当前模板的订阅列表为空。Profile 约 32 KB，规则集和模块会从本仓库自动下载，不需一起导入 iOS。
 
 首次加载后确认选择：FCM 为直连；AI / PayPal / EHentai 为美国；TikTok / Crypto 为日本；Patreon 为香港。相应策略已放在列表首位，但首次是否自动选中需在设备上确认。
 
-后续增加订阅建议修改上述 YAML 列表。只通过界面向 `机场订阅` 添加订阅，不保证同步修改各地区手动组分别挂载的 URL。
+后续增加订阅或自定义节点统一添加到 `全部节点`，其他节点筛选组通过展平获取节点，不再分别配置订阅 URL。
 
 保留全局 `自动选择`；香港、日本、美国、新加坡、台湾、低倍率节点、高倍率节点和其他节点组直接选择筛选后的订阅节点，不再包含独立的自动选择子组。
 
@@ -69,7 +69,7 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 图标由原 SVG 使用 `@resvg/resvg-js@2.6.2` 渲染为 PNG，透明画布不填充底色。全部 PNG 为 8-bit RGBA，Alpha 最小值 0、最大值 255，图形颜色和原有背景形状保持原样。Profile 不再引用 SVG；NSFW 使用 [nsfw_diamond.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/nsfw_diamond.svg) 转换出的 `icons/nsfw_diamond.png`。
 
-全局设置 `default_proxy_group: 机场订阅`，添加自定义节点时使用该组。
+全局设置 `default_proxy_group: 全部节点` 和 `default_subscription_group: 全部节点`，添加节点和订阅时统一使用该组。
 
 规则集、模块和订阅均设置 86400 秒更新。规则更新表示 Egern 重新读取本仓库文件；**不会自动把上游 mihomo/MRS 的新内容转换并提交到本仓库**。更新上游快照后重运行转换、检查并提交才会改变托管内容。
 

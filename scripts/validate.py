@@ -34,7 +34,7 @@ for name, group in groups.items():
     if "filter" in group:
         pcre2.compile(group["filter"])
     if "urls" in group:
-        assert group["urls"] is groups["机场订阅"]["urls"]
+        assert group["urls"] is groups["全部节点"]["urls"]
 
 
 def visit(name, active):
@@ -60,8 +60,9 @@ for name in (
     "高倍率节点",
     "其他节点",
 ):
-    assert "policies" not in groups[name]
-    assert groups[name]["urls"] is groups["机场订阅"]["urls"]
+    assert groups[name]["policies"] == ["全部节点"]
+    assert groups[name]["flatten"] is True
+    assert "urls" not in groups[name]
 
 sets = {}
 count = 0
@@ -171,7 +172,7 @@ module = yaml.safe_load(
 assert module["real_ip_domains"] and "real_ip_domains" not in profile
 assert "proxy_nameservers" not in profile["dns"]
 assert profile["proxy_latency_test_url"] == profile["direct_latency_test_url"]
-assert profile["default_proxy_group"] == "机场订阅"
+assert profile["default_proxy_group"] == "全部节点"
 assert groups["NSFW"]["icon"] == RAW_BASE + "/icons/nsfw_diamond.png"
 
 resources = json.loads((root / "source/manifest.json").read_text(encoding="utf-8"))[
@@ -236,7 +237,10 @@ for domain, (positive, negative) in samples.items():
     assert not any(regex.match(v) for v in negative)
 assert pcre2.compile(groups["香港"]["filter"]).match("香港 01")
 assert not pcre2.compile(groups["香港"]["filter"]).match("日本 01")
-assert not pcre2.compile(groups["香港"]["filter"]).match("香港 剩余流量")
+assert not (
+    pcre2.compile(groups["全部节点"]["filter"]).match("香港 剩余流量")
+    and pcre2.compile(groups["香港"]["filter"]).match("香港 剩余流量")
+)
 assert not pcre2.compile(groups["其他节点"]["filter"]).match("Hong Kong 01")
 assert pcre2.compile(groups["其他节点"]["filter"]).match("德国 01")
 assert groups["FCM"]["policies"][0] == "直连"

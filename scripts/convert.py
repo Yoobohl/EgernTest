@@ -95,7 +95,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     groups = [
         {
             "select": {
-                "name": "机场订阅",
+                "name": "全部节点",
                 "urls": [],
                 "update_interval": 86400,
                 "filter": "(?i)^(?!.*" + exclude + ").*$",
@@ -125,29 +125,16 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             policies.remove(initial)
             policies.insert(0, initial)
         if original.get("include-all"):
-            # Region manual groups mount nodes directly, without automatic subgroups.
-            if kind == "select" and original.get("proxies"):
-                filt = original.get("filter")
-                neg = original.get("exclude-filter")
-                group["urls"] = []
-                group["update_interval"] = 86400
-                combined = "(?i)^(?!.*" + exclude + ")"
-                if filt:
-                    combined += "(?=.*" + filt.removeprefix("(?i)") + ")"
-                if neg:
-                    combined += "(?!.*" + neg.removeprefix("(?i)") + ")"
-                group["filter"] = combined + ".*$"
-            else:
-                policies = ["机场订阅"]
-                group["flatten"] = True
-                if original.get("filter"):
-                    group["filter"] = original["filter"]
-                if original.get("exclude-filter"):
-                    group["filter"] = (
-                        "(?i)^(?!.*"
-                        + original["exclude-filter"].removeprefix("(?i)")
-                        + ").*$"
-                    )
+            policies = ["全部节点"]
+            group["flatten"] = True
+            if original.get("filter"):
+                group["filter"] = original["filter"]
+            if original.get("exclude-filter"):
+                group["filter"] = (
+                    "(?i)^(?!.*"
+                    + original["exclude-filter"].removeprefix("(?i)")
+                    + ").*$"
+                )
         if policies:
             group["policies"] = policies
         for field in ("icon", "hidden"):
@@ -226,8 +213,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         },
         "proxies": [],
         "policy_groups": groups,
-        "default_subscription_group": "机场订阅",
-        "default_proxy_group": "机场订阅",
+        "default_subscription_group": "全部节点",
+        "default_proxy_group": "全部节点",
         "rules": [],
     }
     # Explicit DNS endpoint routing replaces Mihomo's '#policy' annotations.
@@ -306,12 +293,6 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             }[kind]
             profile["rules"].append(rule({translated: {"match": parts[1]}}, parts[2]))
 
-    # Reuse one subscription URL list via a standard YAML anchor. Empty until set.
-    shared_urls = groups[0]["select"]["urls"]
-    for wrapped in groups:
-        group = next(iter(wrapped.values()))
-        if "urls" in group:
-            group["urls"] = shared_urls
     # Put policies and subscriptions at the start for convenient editing.
     head = {
         key: profile[key] for key in ("policy_groups", "default_subscription_group")
@@ -320,12 +301,11 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     text = yaml.safe_dump(
         {**head, **tail}, allow_unicode=True, sort_keys=False, width=120
     )
-    text = text.replace("&id001", "&subscriptions").replace("*id001", "*subscriptions")
     header = """# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
 # 填写下方 urls 的机场订阅。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
-# 示例：将 urls: &subscriptions [] 改为 urls: &subscriptions [\"你的订阅地址\"]。
-# 所有地区手动组共用此 URL 列表；请勿删除 &subscriptions / *subscriptions。
+# 示例：将 urls: [] 改为 urls: [\"你的订阅地址\"]。
+# 地区策略组展平并引用“全部节点”，只需在该组填写一次订阅。
 # 分流规则集和 Real IP 模块从 Yoobohl/EgernTest 加载，每 86400 秒更新。
 # 尚未在 iOS Egern 内运行验证。
 """

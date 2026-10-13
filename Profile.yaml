@@ -1,8 +1,8 @@
 # MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
 # 填写下方 urls 的机场订阅。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
-# 示例：将 urls: &subscriptions [] 改为 urls: &subscriptions ["你的订阅地址"]。
-# 所有地区手动组共用此 URL 列表；请勿删除 &subscriptions / *subscriptions。
+# 示例：将 urls: [] 改为 urls: ["你的订阅地址"]。
+# 地区策略组展平并引用“全部节点”，只需在该组填写一次订阅。
 # 分流规则集和 Real IP 模块从 Yoobohl/EgernTest 加载，每 86400 秒更新。
 # 尚未在 iOS Egern 内运行验证。
 # 原配置许可：
@@ -29,8 +29,8 @@
 # SOFTWARE.
 policy_groups:
 - select:
-    name: 机场订阅
-    urls: &subscriptions []
+    name: 全部节点
+    urls: []
     update_interval: 86400
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b)).*$
     hidden: true
@@ -53,13 +53,13 @@ policy_groups:
     name: 手动选择
     flatten: true
     policies:
-    - 机场订阅
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Static.png
 - auto_test:
     name: 自动选择
     flatten: true
     policies:
-    - 机场订阅
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
     interval: 600
@@ -69,7 +69,7 @@ policy_groups:
     name: 负载均衡
     flatten: true
     policies:
-    - 机场订阅
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/RoundRobin.png
     hidden: true
     interval: 600
@@ -421,51 +421,59 @@ policy_groups:
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/China.png
 - select:
     name: 香港
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)).*$
+    flatten: true
+    filter: (?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/HongKong.png
 - select:
     name: 日本
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)).*$
+    flatten: true
+    filter: (?i)(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Japan.png
 - select:
     name: 美国
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)).*$
+    flatten: true
+    filter: (?i)(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/America.png
 - select:
     name: 新加坡
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)).*$
+    flatten: true
+    filter: (?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Singapore.png
 - select:
     name: 台湾
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    flatten: true
+    filter: (?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Taiwan.png
 - select:
     name: 低倍率节点
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))).*$
+    flatten: true
+    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Available.png
 - select:
     name: 高倍率节点
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?=.*(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))).*$
+    flatten: true
+    filter: (?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Airport.png
 - select:
     name: 其他节点
-    urls: *subscriptions
-    update_interval: 86400
-    filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    flatten: true
+    filter: (?i)^(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    policies:
+    - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/WorldMap.png
 - select:
     name: NSFW
@@ -483,7 +491,7 @@ policy_groups:
     - 高倍率节点
     - 其他节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/nsfw_diamond.png
-default_subscription_group: 机场订阅
+default_subscription_group: 全部节点
 ipv6: true
 http_port: 7890
 socks_port: 7891
@@ -539,20 +547,20 @@ dns:
     - 8.8.8.8
     - 8.8.4.4
     services.googleapis.cn: services.googleapis.com
-    mcdn.bilivideo.com: &id002
+    mcdn.bilivideo.com: &subscriptions
     - 0.0.0.0
-    '*.mcdn.bilivideo.com': *id002
-    mcdn.bilivideo.cn: &id003
+    '*.mcdn.bilivideo.com': *subscriptions
+    mcdn.bilivideo.cn: &id002
     - 0.0.0.0
-    '*.mcdn.bilivideo.cn': *id003
-    edge.mountaintoys.cn: &id004
+    '*.mcdn.bilivideo.cn': *id002
+    edge.mountaintoys.cn: &id003
     - 0.0.0.0
-    '*.edge.mountaintoys.cn': *id004
-    h2.smtcdns.net: &id005
+    '*.edge.mountaintoys.cn': *id003
+    h2.smtcdns.net: &id004
     - 0.0.0.0
-    '*.h2.smtcdns.net': *id005
+    '*.h2.smtcdns.net': *id004
 proxies: []
-default_proxy_group: 机场订阅
+default_proxy_group: 全部节点
 rules:
 - domain:
     match: cloudflare-dns.com
