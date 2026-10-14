@@ -31,6 +31,8 @@ groups = {
     for g in profile["policy_groups"]
 }
 assert len(groups) == len(profile["policy_groups"])
+group_order = list(groups)
+assert group_order.index("NSFW") == group_order.index("EHentai") + 1
 known = set(groups) | {"DIRECT", "REJECT"}
 for name, group in groups.items():
     assert set(group.get("policies", [])) <= known, name

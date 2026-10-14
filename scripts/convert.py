@@ -156,15 +156,19 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             group["algorithm"] = "hash"
         groups.append({kind: group})
 
-    groups.append(
-        {
-            "select": {
-                "name": "NSFW",
-                "policies": list(src["proxies_common"]["proxies_default"]["proxies"]),
-                "icon": f"{raw_base}/icons/nsfw_diamond.png",
-            }
+    nsfw_group = {
+        "select": {
+            "name": "NSFW",
+            "policies": list(src["proxies_common"]["proxies_default"]["proxies"]),
+            "icon": f"{raw_base}/icons/nsfw_diamond.png",
         }
+    }
+    ehentai_index = next(
+        i
+        for i, group in enumerate(groups)
+        if next(iter(group.values()))["name"] == "EHentai"
     )
+    groups.insert(ehentai_index + 1, nsfw_group)
 
     forward = []
     for name, value in (("private", "system"), ("douyin", "douyin"), ("cn", "china")):
