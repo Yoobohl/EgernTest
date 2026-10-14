@@ -22,6 +22,10 @@ from PIL import Image
 
 root = Path(__file__).resolve().parent.parent
 profile = yaml.safe_load((root / "Profile.yaml").read_text(encoding="utf-8"))
+assert not any(
+    isinstance(token, (yaml.tokens.AnchorToken, yaml.tokens.AliasToken))
+    for token in yaml.scan((root / "Profile.yaml").read_text(encoding="utf-8"))
+)
 groups = {
     next(iter(g.values()))["name"]: next(iter(g.values()))
     for g in profile["policy_groups"]

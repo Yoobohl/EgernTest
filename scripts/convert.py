@@ -26,6 +26,11 @@ TEST_URL = "https://www.apple.com/library/test/success.html"
 RAW_BASE = "https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main"
 
 
+class NoAliasDumper(yaml.SafeDumper):
+    def ignore_aliases(self, data):
+        return True
+
+
 def rule(condition, policy):
     kind, value = next(iter(condition.items()))
     return {kind: {**value, "policy": policy}}
@@ -311,8 +316,12 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         key: profile[key] for key in ("policy_groups", "default_subscription_group")
     }
     tail = {key: value for key, value in profile.items() if key not in head}
-    text = yaml.safe_dump(
-        {**head, **tail}, allow_unicode=True, sort_keys=False, width=120
+    text = yaml.dump(
+        {**head, **tail},
+        Dumper=NoAliasDumper,
+        allow_unicode=True,
+        sort_keys=False,
+        width=120,
     )
     header = """# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash

@@ -80,6 +80,8 @@ Dr.COM 小组件可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/
 
 开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；不设置 HTTP / SOCKS 端口，使用 Egern 默认端口。
 
+Profile 直接写出各项配置值，不使用 YAML 锚点与别名；生成脚本同样禁用锚点输出。
+
 规则集、模块和订阅均设置 86400 秒更新。规则更新表示 Egern 重新读取本仓库文件；**不会自动把上游 mihomo/MRS 的新内容转换并提交到本仓库**。更新上游快照后重运行转换、检查并提交才会改变托管内容。
 
 ## 差异

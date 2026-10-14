@@ -553,18 +553,22 @@ dns:
     - 8.8.8.8
     - 8.8.4.4
     services.googleapis.cn: services.googleapis.com
-    mcdn.bilivideo.com: &id001
+    mcdn.bilivideo.com:
     - 0.0.0.0
-    '*.mcdn.bilivideo.com': *id001
-    mcdn.bilivideo.cn: &id002
+    '*.mcdn.bilivideo.com':
     - 0.0.0.0
-    '*.mcdn.bilivideo.cn': *id002
-    edge.mountaintoys.cn: &id003
+    mcdn.bilivideo.cn:
     - 0.0.0.0
-    '*.edge.mountaintoys.cn': *id003
-    h2.smtcdns.net: &id004
+    '*.mcdn.bilivideo.cn':
     - 0.0.0.0
-    '*.h2.smtcdns.net': *id004
+    edge.mountaintoys.cn:
+    - 0.0.0.0
+    '*.edge.mountaintoys.cn':
+    - 0.0.0.0
+    h2.smtcdns.net:
+    - 0.0.0.0
+    '*.h2.smtcdns.net':
+    - 0.0.0.0
 proxies: []
 default_proxy_group: 全部节点
 rules:
