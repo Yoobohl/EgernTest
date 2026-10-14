@@ -215,6 +215,15 @@ drcom_reference = next(
 assert drcom_reference["enabled"] is True
 assert drcom_reference["update_interval"] == 86400
 resolve(drcom_reference["url"])
+external_widgets = {
+    "https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml",
+    "https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml",
+}
+for url in external_widgets:
+    module_reference = next(m for m in profile["modules"] if m["url"] == url)
+    assert module_reference["enabled"] is True
+    assert module_reference["update_interval"] == 86400
+assert len({m["url"] for m in profile["modules"]}) == len(profile["modules"])
 assert profile["vif_only"] is True
 assert profile["ipv6"] is False
 assert "block_quic" not in profile

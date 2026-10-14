@@ -78,6 +78,8 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 Profile 已引用并启用 Dr.COM 小组件模块，每 86400 秒更新。也可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml)安装；使用 Profile 中的引用时无需重复安装。安装说明见 `modules/drcom-egern/README.md`。
 
+另引用并启用[中国移动 Hark 仪表盘](https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml)和[中国电信小组件](https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml)，均通过 CDN `@main` 加载、每 86400 秒更新。模块内部脚本与逻辑由上游作者维护。移动模块需配置 `CM_PHONENUMBER` 并登录中国移动 App 捕获参数；电信模块按作者说明登录 `e.dlife.cn` 捕获数据。两者的捕获功能依赖安装并信任 Egern MITM 证书。
+
 开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；不设置 HTTP / SOCKS 端口，使用 Egern 默认端口。
 
 Profile 直接写出各项配置值，不使用 YAML 锚点与别名；生成脚本同样禁用锚点输出。

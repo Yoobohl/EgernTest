@@ -210,6 +210,18 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 "update_interval": 86400,
                 "enabled": True,
             },
+            {
+                "name": "中国移动（Hark 仪表盘版）",
+                "url": "https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml",
+                "update_interval": 86400,
+                "enabled": True,
+            },
+            {
+                "name": "中国电信小组件",
+                "url": "https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml",
+                "update_interval": 86400,
+                "enabled": True,
+            },
         ],
         "dns": {
             "bootstrap": ["223.5.5.5", "119.29.29.29"],

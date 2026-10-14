@@ -509,6 +509,14 @@ modules:
   url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml
   update_interval: 86400
   enabled: true
+- name: 中国移动（Hark 仪表盘版）
+  url: https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml
+  update_interval: 86400
+  enabled: true
+- name: 中国电信小组件
+  url: https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml
+  update_interval: 86400
+  enabled: true
 dns:
   bootstrap:
   - 223.5.5.5
