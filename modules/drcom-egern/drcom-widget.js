@@ -184,8 +184,8 @@ function renderWidget(info, family, refreshMinutes) {
     stateLine(info.online),
     { type: 'spacer' },
     row([
-      { ...metric('下载 · Download', 'arrow.down', info.download, C.blue, true), flex: 1 },
-      { ...metric('上传 · Upload', 'arrow.up', info.upload, C.green, true), flex: 1 },
+      { ...metric('下载', 'arrow.down', info.download, C.blue, true), flex: 1 },
+      { ...metric('上传', 'arrow.up', info.upload, C.green, true), flex: 1 },
     ], 14, 'start'),
     { type: 'spacer' },
     {
