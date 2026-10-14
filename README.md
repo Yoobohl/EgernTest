@@ -32,6 +32,7 @@ urls:
 | `Profile.yaml` | 全局参数、策略组、DNS、规则集和模块的远程引用，以及原有少量自定义规则。 |
 | `rulesets/*.yaml` | 47 个原规则集（Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 49 个文件。 |
 | `modules/real-ip-domains.yaml` | 用官方模块字段 `real_ip_domains` 保存原 Fake-IP 排除集合。 |
+| `modules/drcom-egern/` | 可独立安装的 Dr.COM 校园网流量小组件模块及其 CDN 脚本。 |
 | `icons/*.png` | 36 个 256×256、8-bit RGBA 图标，包含真实透明像素；Profile 只引用 PNG。 |
 | `source/icons/` | 原始 SVG、来源和 SVG/PNG 校验值，供重新渲染与核对。 |
 | `source/mrs/` | 全部 47 个实际 MRS 文件。 |
@@ -71,6 +72,10 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 全局设置 `default_proxy_group: 全部节点` 和 `default_subscription_group: 全部节点`，添加节点和订阅时统一使用该组。
 
+国内 DNS 上游使用阿里 `https://dns.alidns.com/dns-query` 和腾讯 `https://doh.pub/dns-query`，通过 DIRECT 连接。Bootstrap 使用 `223.5.5.5` / `119.29.29.29`；hosts 固定阿里 DNS 地址为 `223.5.5.5` / `223.6.6.6`，腾讯为 `1.12.12.12` / `120.53.53.53`。其他 DNS 分流和国外 DoH 保留。
+
+Dr.COM 小组件可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml)安装，安装说明见 `modules/drcom-egern/README.md`。
+
 开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；不设置 HTTP / SOCKS 端口，使用 Egern 默认端口。
 
 规则集、模块和订阅均设置 86400 秒更新。规则更新表示 Egern 重新读取本仓库文件；**不会自动把上游 mihomo/MRS 的新内容转换并提交到本仓库**。更新上游快照后重运行转换、检查并提交才会改变托管内容。
@@ -87,7 +92,7 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 | empty-fallback、失败次数、懒测速 | 无官方对应字段，省略；不能保证无节点时与原配置相同。 |
 | 订阅名称前缀、类型排除、AGE 解密 | 无文档化一一对应字段，只保留名称过滤；多订阅应避免节点同名，并提供 Egern 可读取的订阅。 |
 | proxy-server-nameserver | 不硬套到 Egern 的 `proxy_nameservers`：后者用于代理目标域名解析并绕过全部 Forward。当前不设置，让解析共享 Forward，不能独立复现原节点服务器域名专用 DNS 池。 |
-| Bootstrap 中加密 DNS | Egern Bootstrap 只支持普通 UDP DNS，保留原 114.114.114.114。 |
+| Bootstrap 中加密 DNS | Egern Bootstrap 只支持普通 UDP DNS；当前使用 223.5.5.5 / 119.29.29.29。 |
 | direct-nameserver-follow-policy | 用原域名集合分流近似，手动改为直连不会同步切换 DNS。Egern 代理侧 DNS 上游连接强制直连，行为见官方 DNS 文档。 |
 | Fake-IP 排除通配符 | `+.域名` 展开为域名本身及 `*.域名`。少量单标签通配符在 real_ip_domains 的 glob 中可能匹配更广。 |
 | 7 条 Emby PROCESS-NAME | 删除，保留 Emby 域名规则。列表见 `source/manifest.json`。 |

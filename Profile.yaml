@@ -507,11 +507,12 @@ modules:
   enabled: true
 dns:
   bootstrap:
-  - 114.114.114.114
+  - 223.5.5.5
+  - 119.29.29.29
   upstreams:
     china:
-    - 223.5.5.5
-    - 119.29.29.29
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
     douyin:
     - system
     - 180.184.1.1
@@ -546,9 +547,9 @@ dns:
     - 8.8.8.8
     - 8.8.4.4
     services.googleapis.cn: services.googleapis.com
-    mcdn.bilivideo.com: &subscriptions
+    mcdn.bilivideo.com: &id001
     - 0.0.0.0
-    '*.mcdn.bilivideo.com': *subscriptions
+    '*.mcdn.bilivideo.com': *id001
     mcdn.bilivideo.cn: &id002
     - 0.0.0.0
     '*.mcdn.bilivideo.cn': *id002
@@ -558,6 +559,9 @@ dns:
     h2.smtcdns.net: &id004
     - 0.0.0.0
     '*.h2.smtcdns.net': *id004
+    dns.alidns.com:
+    - 223.5.5.5
+    - 223.6.6.6
 proxies: []
 default_proxy_group: 全部节点
 rules:
@@ -586,12 +590,19 @@ rules:
 - domain:
     match: doh.pub
     policy: DIRECT
+- domain:
+    match: dns.alidns.com
+    policy: DIRECT
 - ip_cidr:
     match: 114.114.114.114/32
     no_resolve: true
     policy: DIRECT
 - ip_cidr:
     match: 223.5.5.5/32
+    no_resolve: true
+    policy: DIRECT
+- ip_cidr:
+    match: 223.6.6.6/32
     no_resolve: true
     policy: DIRECT
 - ip_cidr:

@@ -567,6 +567,6 @@
     "PROCESS-NAME,RodelPlayer.App.exe,Emby",
     "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
   ],
-  "routing_rule_count": 65,
+  "routing_rule_count": 67,
   "dns_forward_count": 4
 }

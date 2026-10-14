@@ -171,6 +171,29 @@ module = yaml.safe_load(
 )
 assert module["real_ip_domains"] and "real_ip_domains" not in profile
 assert "proxy_nameservers" not in profile["dns"]
+assert profile["dns"]["bootstrap"] == ["223.5.5.5", "119.29.29.29"]
+assert profile["dns"]["upstreams"]["china"] == [
+    "https://dns.alidns.com/dns-query",
+    "https://doh.pub/dns-query",
+]
+assert profile["dns"]["hosts"]["dns.alidns.com"] == ["223.5.5.5", "223.6.6.6"]
+assert profile["dns"]["hosts"]["doh.pub"] == ["1.12.12.12", "120.53.53.53"]
+for name in ("doh.pub", "dns.alidns.com"):
+    assert (
+        next(
+            r["domain"]["policy"]
+            for r in profile["rules"]
+            if r.get("domain", {}).get("match") == name
+        )
+        == "DIRECT"
+    )
+drcom = yaml.safe_load(
+    (root / "modules/drcom-egern/drcom.module.yaml").read_text(encoding="utf-8")
+)
+script = drcom["scriptings"][0]["generic"]
+assert script["script_url"] == RAW_BASE + "/modules/drcom-egern/drcom-widget.js"
+resolve(script["script_url"])
+assert drcom["widgets"][0]["script_name"] == script["name"]
 assert profile["proxy_latency_test_url"] == profile["direct_latency_test_url"]
 assert profile["default_proxy_group"] == "全部节点"
 assert profile["vif_only"] is True

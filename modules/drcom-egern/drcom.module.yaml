@@ -1,0 +1,18 @@
+# Dr.COM Egern Widget Module
+# The widget script is hosted with this module in Yoobohl/EgernTest.
+name: "Dr.COM 校园网流量"
+description: "从校园网 chkstatus 状态接口显示上下行累计流量与 IPv4"
+icon: "wifi"
+scriptings:
+  - generic:
+      name: "drcom-traffic-script"
+      script_url: "https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom-widget.js"
+      timeout: 10
+      update_interval: 86400
+      env:
+        DRCOM_API_URL: "http://10.100.88.2/drcom/chkstatus?callback=dr1003&jsVersion=4.1&v=630&lang=zh"
+        TRAFFIC_UNIT: "KB"
+        REFRESH_MINUTES: "5"
+widgets:
+  - name: "Dr.COM 校园网"
+    script_name: "drcom-traffic-script"

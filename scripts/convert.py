@@ -172,6 +172,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             hosts["*." + domain[2:]] = values
         else:
             hosts[domain] = values
+    hosts["dns.alidns.com"] = ["223.5.5.5", "223.6.6.6"]
+    hosts["doh.pub"] = ["1.12.12.12", "120.53.53.53"]
     real_ip = []
     for name in ("private", "fakeip_filter", "geolocation-cn", "googlefcm"):
         for domain in entries[name]:
@@ -198,9 +200,12 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             }
         ],
         "dns": {
-            "bootstrap": ["114.114.114.114"],
+            "bootstrap": ["223.5.5.5", "119.29.29.29"],
             "upstreams": {
-                "china": ["223.5.5.5", "119.29.29.29"],
+                "china": [
+                    "https://dns.alidns.com/dns-query",
+                    "https://doh.pub/dns-query",
+                ],
                 "douyin": ["system", "180.184.1.1", "180.184.2.2"],
                 "foreign": [
                     "https://cloudflare-dns.com/dns-query",
@@ -225,12 +230,16 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         rule({"ip_cidr": {"match": ip + "/32", "no_resolve": True}}, "默认代理")
         for ip in ("1.1.1.1", "1.0.0.1", "8.8.8.8", "8.8.4.4")
     ]
-    dns_rules += [rule({"domain": {"match": "doh.pub"}}, "DIRECT")]
+    dns_rules += [
+        rule({"domain": {"match": domain}}, "DIRECT")
+        for domain in ("doh.pub", "dns.alidns.com")
+    ]
     dns_rules += [
         rule({"ip_cidr": {"match": ip + "/32", "no_resolve": True}}, "DIRECT")
         for ip in (
             "114.114.114.114",
             "223.5.5.5",
+            "223.6.6.6",
             "119.29.29.29",
             "1.12.12.12",
             "120.53.53.53",
