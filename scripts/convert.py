@@ -203,7 +203,13 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 "url": f"{raw_base}/modules/real-ip-domains.yaml",
                 "update_interval": 86400,
                 "enabled": True,
-            }
+            },
+            {
+                "name": "Dr.COM 校园网流量",
+                "url": f"{raw_base}/modules/drcom-egern/drcom.module.yaml",
+                "update_interval": 86400,
+                "enabled": True,
+            },
         ],
         "dns": {
             "bootstrap": ["223.5.5.5", "119.29.29.29"],
@@ -325,7 +331,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     )
     header = """# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
-# 填写下方 urls 的机场订阅。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
+# 在“全部节点”的 urls 中填写订阅地址。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
 # 示例：将 urls: [] 改为 urls: [\"你的订阅地址\"]。
 # 地区策略组展平并引用“全部节点”，只需在该组填写一次订阅。
 # 分流规则集和 Real IP 模块从 Yoobohl/EgernTest 加载，每 86400 秒更新。

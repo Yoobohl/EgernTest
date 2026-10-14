@@ -205,6 +205,16 @@ resolve(script["script_url"])
 assert drcom["widgets"][0]["script_name"] == script["name"]
 assert profile["proxy_latency_test_url"] == profile["direct_latency_test_url"]
 assert profile["default_proxy_group"] == "全部节点"
+assert profile["default_subscription_group"] == "全部节点"
+assert "机场订阅" not in groups
+for group in groups.values():
+    assert "机场订阅" not in group.get("policies", [])
+drcom_reference = next(
+    m for m in profile["modules"] if m["url"].endswith("/drcom.module.yaml")
+)
+assert drcom_reference["enabled"] is True
+assert drcom_reference["update_interval"] == 86400
+resolve(drcom_reference["url"])
 assert profile["vif_only"] is True
 assert profile["ipv6"] is False
 assert "block_quic" not in profile

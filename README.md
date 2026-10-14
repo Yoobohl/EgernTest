@@ -76,7 +76,7 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 `proxy_nameservers` 同样使用阿里、腾讯 DoH。按 Egern 文档，代理侧 DNS 将固定使用这两个上游并强制直连，不再经过 Forward 分流；普通 DNS 查询继续使用原有 Forward 规则。
 
-Dr.COM 小组件可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml)安装，安装说明见 `modules/drcom-egern/README.md`。
+Profile 已引用并启用 Dr.COM 小组件模块，每 86400 秒更新。也可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml)安装；使用 Profile 中的引用时无需重复安装。安装说明见 `modules/drcom-egern/README.md`。
 
 开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；不设置 HTTP / SOCKS 端口，使用 Egern 默认端口。
 
