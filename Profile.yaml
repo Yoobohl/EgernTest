@@ -509,6 +509,9 @@ dns:
   bootstrap:
   - 223.5.5.5
   - 119.29.29.29
+  proxy_nameservers:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
   upstreams:
     china:
     - https://dns.alidns.com/dns-query
@@ -540,6 +543,9 @@ dns:
     doh.pub:
     - 1.12.12.12
     - 120.53.53.53
+    dns.alidns.com:
+    - 223.5.5.5
+    - 223.6.6.6
     cloudflare-dns.com:
     - 1.1.1.1
     - 1.0.0.1
@@ -559,9 +565,6 @@ dns:
     h2.smtcdns.net: &id004
     - 0.0.0.0
     '*.h2.smtcdns.net': *id004
-    dns.alidns.com:
-    - 223.5.5.5
-    - 223.6.6.6
 proxies: []
 default_proxy_group: 全部节点
 rules:

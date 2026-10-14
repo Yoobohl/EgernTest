@@ -74,6 +74,8 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 国内 DNS 上游使用阿里 `https://dns.alidns.com/dns-query` 和腾讯 `https://doh.pub/dns-query`，通过 DIRECT 连接。Bootstrap 使用 `223.5.5.5` / `119.29.29.29`；hosts 固定阿里 DNS 地址为 `223.5.5.5` / `223.6.6.6`，腾讯为 `1.12.12.12` / `120.53.53.53`。其他 DNS 分流和国外 DoH 保留。
 
+`proxy_nameservers` 同样使用阿里、腾讯 DoH。按 Egern 文档，代理侧 DNS 将固定使用这两个上游并强制直连，不再经过 Forward 分流；普通 DNS 查询继续使用原有 Forward 规则。
+
 Dr.COM 小组件可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml)安装，安装说明见 `modules/drcom-egern/README.md`。
 
 开启兼容路由 `compat_route: true`。全局不指定 `block_quic`，使用默认行为；不设置 HTTP / SOCKS 端口，使用 Egern 默认端口。
@@ -91,7 +93,7 @@ Dr.COM 小组件可从[独立模块地址](https://cdn.jsdmirror.com/gh/Yoobohl/
 | AdBlock 的 REJECT-DROP / PASS | 只保留文档支持的 REJECT。关闭拦截时禁用或移除对应广告规则。 |
 | empty-fallback、失败次数、懒测速 | 无官方对应字段，省略；不能保证无节点时与原配置相同。 |
 | 订阅名称前缀、类型排除、AGE 解密 | 无文档化一一对应字段，只保留名称过滤；多订阅应避免节点同名，并提供 Egern 可读取的订阅。 |
-| proxy-server-nameserver | 不硬套到 Egern 的 `proxy_nameservers`：后者用于代理目标域名解析并绕过全部 Forward。当前不设置，让解析共享 Forward，不能独立复现原节点服务器域名专用 DNS 池。 |
+| proxy-server-nameserver | Egern 的 `proxy_nameservers` 用于代理目标域名解析，作用不同于 mihomo 的节点服务器 DNS。当前显式设置阿里、腾讯 DoH，代理侧解析绕过 Forward 并强制直连。 |
 | Bootstrap 中加密 DNS | Egern Bootstrap 只支持普通 UDP DNS；当前使用 223.5.5.5 / 119.29.29.29。 |
 | direct-nameserver-follow-policy | 用原域名集合分流近似，手动改为直连不会同步切换 DNS。Egern 代理侧 DNS 上游连接强制直连，行为见官方 DNS 文档。 |
 | Fake-IP 排除通配符 | `+.域名` 展开为域名本身及 `*.域名`。少量单标签通配符在 real_ip_domains 的 glob 中可能匹配更广。 |

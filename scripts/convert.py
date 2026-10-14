@@ -172,7 +172,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             hosts["*." + domain[2:]] = values
         else:
             hosts[domain] = values
-    hosts["dns.alidns.com"] = ["223.5.5.5", "223.6.6.6"]
+        if domain == "doh.pub":
+            hosts["dns.alidns.com"] = ["223.5.5.5", "223.6.6.6"]
     hosts["doh.pub"] = ["1.12.12.12", "120.53.53.53"]
     real_ip = []
     for name in ("private", "fakeip_filter", "geolocation-cn", "googlefcm"):
@@ -201,6 +202,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         ],
         "dns": {
             "bootstrap": ["223.5.5.5", "119.29.29.29"],
+            "proxy_nameservers": [
+                "https://dns.alidns.com/dns-query",
+                "https://doh.pub/dns-query",
+            ],
             "upstreams": {
                 "china": [
                     "https://dns.alidns.com/dns-query",

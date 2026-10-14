@@ -170,7 +170,12 @@ module = yaml.safe_load(
     resolve(profile["modules"][0]["url"]).read_text(encoding="utf-8")
 )
 assert module["real_ip_domains"] and "real_ip_domains" not in profile
-assert "proxy_nameservers" not in profile["dns"]
+assert profile["dns"]["proxy_nameservers"] == [
+    "https://dns.alidns.com/dns-query",
+    "https://doh.pub/dns-query",
+]
+host_names = list(profile["dns"]["hosts"])
+assert host_names.index("dns.alidns.com") == host_names.index("doh.pub") + 1
 assert profile["dns"]["bootstrap"] == ["223.5.5.5", "119.29.29.29"]
 assert profile["dns"]["upstreams"]["china"] == [
     "https://dns.alidns.com/dns-query",
