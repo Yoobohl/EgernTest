@@ -558,6 +558,13 @@
       "covered_count": 4,
       "output_count": 426,
       "original_mrs_text_count": 235
+    },
+    "douyin": {
+      "source": "source/douyin-extra.yaml",
+      "source_sha256": "dff80f84454498ada256c604acb3bf710100063d3f0bdeb4ba8ac5e5b8137071",
+      "original_mrs_text_count": 71,
+      "supported_input_count": 13,
+      "output_count": 80
     }
   },
   "skipped_process_rules": [
@@ -569,6 +576,6 @@
     "PROCESS-NAME,RodelPlayer.App.exe,Emby",
     "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
   ],
-  "routing_rule_count": 68,
+  "routing_rule_count": 69,
   "dns_forward_count": 4
 }

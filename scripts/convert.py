@@ -79,6 +79,26 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         ROOT / "rulesets/cn_ip-no-resolve.yaml", entries["cn_ip"], "ipcidr", True
     )
     supplemental = add_supplemental_sets(ROOT)
+    # Preserve user additions separately from the original MRS snapshot.
+    douyin_extra_path = SOURCE / "douyin-extra.yaml"
+    douyin_extra = yaml.safe_load(douyin_extra_path.read_text(encoding="utf-8"))
+    douyin_path = ROOT / "rulesets/douyin.yaml"
+    douyin = yaml.safe_load(douyin_path.read_text(encoding="utf-8"))
+    original_count = sum(len(values) for values in douyin.values())
+    for field, values in douyin_extra.items():
+        if field not in {"domain_set", "domain_suffix_set", "domain_keyword_set"}:
+            raise ValueError(f"Unsupported Douyin supplemental field: {field}")
+        douyin[field] = sorted(set(douyin.get(field, [])) | set(values))
+    douyin_path.write_text(
+        yaml.safe_dump(douyin, allow_unicode=True, sort_keys=False), encoding="utf-8"
+    )
+    supplemental["douyin"] = {
+        "source": "source/douyin-extra.yaml",
+        "source_sha256": sha256(douyin_extra_path),
+        "original_mrs_text_count": original_count,
+        "supported_input_count": sum(len(values) for values in douyin_extra.values()),
+        "output_count": sum(len(values) for values in douyin.values()),
+    }
     (SOURCE / "mrs-tool.json").write_text(
         json.dumps(
             {
@@ -317,6 +337,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 # proxy service sets, so their domains cannot shadow these lists.
                 continue
             profile["rules"].append({"rule_set": {**reference(name), "policy": policy}})
+            if name == "private":
+                profile["rules"].append(
+                    {"rule_set": {**reference("douyin"), "policy": "DIRECT"}}
+                )
             if name == "category-ads":
                 profile["rules"].extend(
                     [

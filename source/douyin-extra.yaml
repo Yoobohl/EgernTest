@@ -1,0 +1,18 @@
+# User-supplied Douyin additions; merged after rebuilding the MRS snapshot.
+# Routing policy is set to DIRECT by the reference in Profile.yaml.
+domain_suffix_set:
+- douyincdn.com
+- douyinliving.com
+- douyinvod.com
+- douyinpic.com
+- bytegecko.com
+- byteeffecttos.com
+- byteimg.com
+- ecombdimg.com
+- bytehwm.com
+- bytecdn.com
+- zjcdn.com
+domain_keyword_set:
+- awememusicpgc
+domain_set:
+- v9-awememusicpgc.amemv.com

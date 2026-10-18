@@ -664,6 +664,10 @@ rules:
     update_interval: 86400
     policy: DIRECT
 - rule_set:
+    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/douyin.yaml
+    update_interval: 86400
+    policy: DIRECT
+- rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/geolocation-cn.yaml
     update_interval: 86400
     policy: DIRECT
