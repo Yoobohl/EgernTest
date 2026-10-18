@@ -1,4 +1,5 @@
-# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
+# MyClash mihomo 全量版 → Egern，配置同步日期：2026-10-18（Asia/Taipei）
+# 上游配置提交：badd718b81a7c541b574e975ba48d8ca7813759c；规则集快照日期：2026-10-13。
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
 # 在“全部节点”的 urls 中填写订阅地址。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
 # 示例：将 urls: [] 改为 urls: ["你的订阅地址"]。
@@ -140,6 +141,22 @@ policy_groups:
     - 高倍率节点
     - 其他节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/OpenAI.png
+- select:
+    name: GitHub
+    policies:
+    - 默认代理
+    - 手动选择
+    - 自动选择
+    - 负载均衡
+    - 香港
+    - 日本
+    - 美国
+    - 新加坡
+    - 台湾
+    - 低倍率节点
+    - 高倍率节点
+    - 其他节点
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/GitHub.png
 - select:
     name: Microsoft
     policies:
@@ -473,7 +490,7 @@ policy_groups:
 - select:
     name: 低倍率节点
     flatten: true
-    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<!\d)0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
+    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<![\d.])0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
     policies:
     - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Available.png
@@ -491,7 +508,6 @@ policy_groups:
     policies:
     - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/WorldMap.png
-
 default_subscription_group: 全部节点
 ipv6: false
 allow_external_connections: true
@@ -645,6 +661,9 @@ rules:
     match: 180.184.2.2/32
     no_resolve: true
     policy: DIRECT
+- domain:
+    match: cdn.jsdmirror.com
+    policy: 直连
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
     update_interval: 86400
@@ -731,7 +750,7 @@ rules:
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/github.yaml
     update_interval: 86400
-    policy: 默认代理
+    policy: GitHub
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft.yaml
     update_interval: 86400

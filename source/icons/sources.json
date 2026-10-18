@@ -55,6 +55,11 @@
     "url": "https://raw.githubusercontent.com/AIsouler/MyClash/main/Icons/svg/Fcm.svg"
   },
   {
+    "name": "GitHub.svg",
+    "source": "https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/GitHub.svg",
+    "url": "https://raw.githubusercontent.com/AIsouler/MyClash/main/Icons/svg/GitHub.svg"
+  },
+  {
     "name": "Google.svg",
     "source": "https://cdn.jsdmirror.com/gh/AIsouler/MyClash@main/Icons/svg/Google.svg",
     "url": "https://raw.githubusercontent.com/AIsouler/MyClash/main/Icons/svg/Google.svg"

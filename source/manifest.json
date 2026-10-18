@@ -1,5 +1,7 @@
 {
   "snapshot_date": "2026-10-13",
+  "config_snapshot_date": "2026-10-18",
+  "config_upstream_commit": "badd718b81a7c541b574e975ba48d8ca7813759c",
   "resources": [
     {
       "name": "private",
@@ -567,6 +569,6 @@
     "PROCESS-NAME,RodelPlayer.App.exe,Emby",
     "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
   ],
-  "routing_rule_count": 67,
+  "routing_rule_count": 68,
   "dns_forward_count": 4
 }

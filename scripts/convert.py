@@ -345,7 +345,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         sort_keys=False,
         width=120,
     )
-    header = """# MyClash mihomo 全量版 → Egern，转换日期：2026-10-13（Asia/Taipei）
+    header = """# MyClash mihomo 全量版 → Egern，配置同步日期：2026-10-18（Asia/Taipei）
+# 上游配置提交：badd718b81a7c541b574e975ba48d8ca7813759c；规则集快照日期：2026-10-13。
 # 原作者：AIsouler；原配置：https://github.com/AIsouler/MyClash
 # 在“全部节点”的 urls 中填写订阅地址。必须返回 Egern 原生代理 YAML 或 Egern 可识别的订阅。
 # 示例：将 urls: [] 改为 urls: [\"你的订阅地址\"]。
@@ -384,6 +385,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         json.dumps(
             {
                 "snapshot_date": "2026-10-13",
+                "config_snapshot_date": "2026-10-18",
+                "config_upstream_commit": "badd718b81a7c541b574e975ba48d8ca7813759c",
                 "resources": manifest,
                 "supplemental_sets": supplemental,
                 "skipped_process_rules": skipped,

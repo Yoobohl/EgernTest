@@ -121,6 +121,17 @@
     "renderer": "@resvg/resvg-js@2.6.2"
   },
   {
+    "name": "GitHub.png",
+    "source": "https://raw.githubusercontent.com/AIsouler/MyClash/main/Icons/svg/GitHub.svg",
+    "svg_sha256": "b93d1bfcc0bde60a2d13dca04082f1678ab3c388d7041d4fa2f8969edf78432f",
+    "png_sha256": "b2f4af2421221add88f2d625be03712cb3a68f05cbc2717f3d7fccf63adfdf78",
+    "width": 256,
+    "height": 256,
+    "color_type": 6,
+    "bit_depth": 8,
+    "renderer": "@resvg/resvg-js@2.6.2"
+  },
+  {
     "name": "Google.png",
     "source": "https://raw.githubusercontent.com/AIsouler/MyClash/main/Icons/svg/Google.svg",
     "svg_sha256": "d3ae7b5d47674121a585101d6c67d05abe454db3c9fcfc596afad71760811685",

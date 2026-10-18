@@ -1,6 +1,6 @@
 # MyClash → Egern
 
-根据 [AIsouler/MyClash 的 mihomo 全量配置](https://github.com/AIsouler/MyClash/blob/main/Config/mihomoConfig.yaml)转换。原作者 AIsouler；配置和规则快照读取于 2026-10-13（Asia/Taipei）。47 个基础规则集由实际 MRS 经官方 mihomo v1.19.32 `DumpMrs` 导出，另合入 Yoobohl/proxy-profiles 的 NSFW / Web3 classical 规则。
+根据 [AIsouler/MyClash 的 mihomo 全量配置](https://github.com/AIsouler/MyClash/blob/main/Config/mihomoConfig.yaml)转换。原作者 AIsouler；配置已同步至 2026-10-18 的上游提交 `badd718b81a7c541b574e975ba48d8ca7813759c`，规则快照仍读取于 2026-10-13（Asia/Taipei）。47 个基础规则集由实际 MRS 经官方 mihomo v1.19.32 `DumpMrs` 导出，另合入 Yoobohl/proxy-profiles 的 NSFW / Web3 classical 规则。
 
 配置、规则集、Real IP 模块与 PNG 图标统一托管在 [Yoobohl/EgernTest](https://github.com/Yoobohl/EgernTest)。
 
@@ -25,6 +25,8 @@ urls:
 
 保留全局 `自动选择`；香港、日本、美国、新加坡、台湾、低倍率节点、高倍率节点和其他节点组直接选择筛选后的订阅节点，不再包含独立的自动选择子组。
 
+2026-10-18 已同步上游三项修改：低倍率过滤排除数字或小数点前缀，减少小数片段误匹配；新增 `GitHub` 手动选择组（首项为 `默认代理`）及 PNG 图标，GitHub 规则集改走该组；在远程规则集引用之前添加 `cdn.jsdmirror.com` 精确域名直连规则，避免规则集下载路由依赖尚未加载的规则集。此次未更新远程 MRS 内容。
+
 ## 文件与转换
 
 | 文件 | 作用 |
@@ -33,7 +35,7 @@ urls:
 | `rulesets/*.yaml` | 47 个原规则集（Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 49 个文件。 |
 | `modules/real-ip-domains.yaml` | 用官方模块字段 `real_ip_domains` 保存原 Fake-IP 排除集合。 |
 | `modules/drcom-egern/` | 可独立安装的 Dr.COM 校园网流量小组件模块及其 CDN 脚本。 |
-| `icons/*.png` | 36 个 256×256、8-bit RGBA 图标，包含真实透明像素；Profile 只引用 PNG。 |
+| `icons/*.png` | 37 个 256×256、8-bit RGBA 图标，包含真实透明像素；Profile 只引用 PNG。 |
 | `source/icons/` | 原始 SVG、来源和 SVG/PNG 校验值，供重新渲染与核对。 |
 | `source/mrs/` | 全部 47 个实际 MRS 文件。 |
 | `source/text/` | 官方 mihomo v1.19.32 从 MRS 导出的 47 个文本文件。 |
