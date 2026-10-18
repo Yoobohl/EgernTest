@@ -31,9 +31,13 @@ class NoAliasDumper(yaml.SafeDumper):
         return True
 
 
+def policy_name(name):
+    return "DIRECT" if name == "直连" else name
+
+
 def rule(condition, policy):
     kind, value = next(iter(condition.items()))
-    return {kind: {**value, "policy": policy}}
+    return {kind: {**value, "policy": policy_name(policy)}}
 
 
 def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
@@ -109,23 +113,21 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         }
     ]
     for original in src["proxy-groups"]:
-        if original["name"].endswith("-自动选择"):
+        if original["name"] == "直连" or original["name"].endswith("-自动选择"):
             continue
         kind = {"url-test": "auto_test", "load-balance": "load_balance"}.get(
             original["type"], original["type"]
         )
         group: dict[str, Any] = {"name": original["name"]}
         policies = [
-            name
+            policy_name(name)
             for name in original.get("proxies", [])
             if not name.endswith("-自动选择")
         ]
-        if original["name"] == "直连":
-            policies = ["DIRECT"]
-        elif original["name"] == "AdBlock":
+        if original["name"] == "AdBlock":
             policies = ["REJECT"]
         # No documented default-selected: preserve intended choice as first item.
-        initial = original.get("default-selected")
+        initial = policy_name(original.get("default-selected"))
         if initial in policies:
             policies.remove(initial)
             policies.insert(0, initial)
@@ -159,7 +161,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     nsfw_group = {
         "select": {
             "name": "NSFW",
-            "policies": list(src["proxies_common"]["proxies_default"]["proxies"]),
+            "policies": [
+                policy_name(name)
+                for name in src["proxies_common"]["proxies_default"]["proxies"]
+            ],
             "icon": f"{raw_base}/icons/nsfw_diamond.png",
         }
     }
@@ -306,6 +311,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             )
         elif kind == "RULE-SET":
             name, policy = parts[1:3]
+            policy = policy_name(policy)
             if name == "cryptocurrency":
                 # Its merged reference is inserted with NSFW before the general
                 # proxy service sets, so their domains cannot shadow these lists.
@@ -324,7 +330,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                     ]
                 )
         elif kind == "MATCH":
-            profile["rules"].append({"default": {"policy": parts[1]}})
+            profile["rules"].append({"default": {"policy": policy_name(parts[1])}})
         else:
             translated = {
                 "DOMAIN": "domain",

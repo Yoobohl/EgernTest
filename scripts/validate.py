@@ -301,7 +301,7 @@ assert not (
 )
 assert not pcre2.compile(groups["其他节点"]["filter"]).match("Hong Kong 01")
 assert pcre2.compile(groups["其他节点"]["filter"]).match("德国 01")
-assert groups["FCM"]["policies"][0] == "直连"
+assert groups["FCM"]["policies"][0] == "DIRECT"
 assert groups["AI"]["policies"][0] == "美国"
 
 

@@ -19,7 +19,9 @@ urls:
 
 当前模板的订阅列表为空。Profile 约 32 KB，规则集和模块会从本仓库自动下载，不需一起导入 iOS。
 
-首次加载后确认选择：FCM 为直连；AI / PayPal / EHentai 为美国；TikTok / Crypto 为日本；Patreon 为香港。相应策略已放在列表首位，但首次是否自动选中需在设备上确认。
+首次加载后确认选择：FCM 为 `DIRECT`；AI / PayPal / EHentai 为美国；TikTok / Crypto 为日本；Patreon 为香港。相应策略已放在列表首位，但首次是否自动选中需在设备上确认。
+
+直连规则和各策略组中的直连选项统一使用 Egern 内置的 `DIRECT`，不再设置单独的“直连”策略组。
 
 后续增加订阅或自定义节点统一添加到 `全部节点`，其他节点筛选组通过展平获取节点，不再分别配置订阅 URL。
 
@@ -93,7 +95,7 @@ Profile 直接写出各项配置值，不使用 YAML 锚点与别名；生成脚
 | 原功能 | Egern 处理 |
 | --- | --- |
 | HTTP/SOCKS 混合端口 7890 | 不指定端口，使用 Egern 默认端口；保留允许局域网连接。 |
-| 五种 direct 节点及 IP 版本偏好 | 合并为 `直连 → DIRECT`；文档没有 direct 节点或 DIRECT 的对应 IP 偏好字段。 |
+| 五种 direct 节点及 IP 版本偏好 | 统一使用内置 `DIRECT`，不保留独立直连组；文档没有 direct 节点或 DIRECT 的对应 IP 偏好字段。 |
 | sticky-sessions 负载均衡 | 使用 Egern `hash`，并不完全等同原粘性会话算法。 |
 | default-selected | 把目标策略放在首位，导入后确认实际选中项。 |
 | AdBlock 的 REJECT-DROP / PASS | 只保留文档支持的 REJECT。关闭拦截时禁用或移除对应广告规则。 |
