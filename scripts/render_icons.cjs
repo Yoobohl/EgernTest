@@ -48,10 +48,12 @@ for (const source of sources) {
     if (!fs.existsSync(fontPath)) throw new Error('Set RESVG_FONT to an Arial Black font file for the NSFW icon.');
     fontFiles.push(fontPath);
   }
+  // 单色版使用 144 像素画布进行显示效果对比，其余图标保持 256 像素。
+  const size = source.name === 'GitHub_monochrome.svg' ? 144 : 256;
   const renderer = new Resvg(svg, {
     // 透明画布不额外填底色；SVG 本身已有的背景形状仍会保留。
     background: 'rgba(0,0,0,0)',
-    fitTo: { mode: 'width', value: 256 },
+    fitTo: { mode: 'width', value: size },
     font: { loadSystemFonts: false, fontFiles },
   });
   const rendered = renderer.render();

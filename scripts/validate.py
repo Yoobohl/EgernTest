@@ -136,7 +136,9 @@ for item in icon_manifest:
     )
     with Image.open(path) as image:
         assert image.format == "PNG" and image.mode == "RGBA"
-        assert image.size == (256, 256)
+        expected_size = 144 if path.name == "GitHub_monochrome.png" else 256
+        assert image.size == (expected_size, expected_size)
+        assert image.size == (item["width"], item["height"])
         assert image.getchannel("A").getextrema() == (0, 255)
 for group in groups.values():
     if "icon" in group:

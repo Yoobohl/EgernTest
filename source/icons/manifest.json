@@ -135,9 +135,9 @@
     "name": "GitHub_monochrome.png",
     "source": "https://raw.githubusercontent.com/Yoobohl/proxy-profiles/main/icons/github.svg",
     "svg_sha256": "32e6d2019c130b05202c5db57f4d81c26ee9cbd433654d5468702874a8fa98d8",
-    "png_sha256": "41aa4ab49da6fe95cc1de4d47caf86935ae7f7836d500d646bf75e0f94dea802",
-    "width": 256,
-    "height": 256,
+    "png_sha256": "ddde0ad335cf73949afc69d53e5c89d02ef51dc372a9722bbfdc4c0cd1b4e140",
+    "width": 144,
+    "height": 144,
     "color_type": 6,
     "bit_depth": 8,
     "renderer": "@resvg/resvg-js@2.6.2"

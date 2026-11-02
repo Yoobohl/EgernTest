@@ -41,7 +41,7 @@ urls:
 | `rulesets/*.yaml` | 46 个原规则集（已移除 Epic Games，Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 48 个文件。 |
 | `modules/real-ip-domains.yaml` | 用官方模块字段 `real_ip_domains` 保存原 Fake-IP 排除集合。 |
 | `modules/drcom-egern/` | 可独立安装的 Dr.COM 校园网流量小组件模块及其 CDN 脚本。 |
-| `icons/*.png` | 40 个 RGBA 图标：38 个 SVG 渲染图标及 APNs 为 256×256，Qure Color 英国旗帜为 144×144；Profile 只引用 PNG。 |
+| `icons/*.png` | 40 个 RGBA 图标：37 个 SVG 渲染图标为 256×256，GitHub 单色、APNs 和 Qure Color 英国旗帜为 144×144；Profile 只引用 PNG。 |
 | `source/icons/` | 原始 SVG、来源和 SVG/PNG 校验值，供重新渲染与核对。 |
 | `source/mrs/` | 全部 46 个实际 MRS 文件。 |
 | `source/text/` | 官方 mihomo v1.19.32 从 MRS 导出的 46 个文本文件。 |
@@ -78,7 +78,7 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 
 图标由原 SVG 使用 `@resvg/resvg-js@2.6.2` 渲染为 PNG，透明画布不填充底色。全部 PNG 为 8-bit RGBA，Alpha 最小值 0、最大值 255，图形颜色和原有背景形状保持原样。Profile 不再引用 SVG；NSFW 使用 [nsfw_diamond.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/nsfw_diamond.svg) 转换出的 `icons/nsfw_diamond.png`。
 
-GitHub 单色图标使用 [github.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/github.svg) 渲染为 256×256 的 `icons/GitHub_monochrome.png`，SVG 快照和校验值保存在 `source/icons/`，可通过图标渲染脚本重建。渲染时将原始 `0 0 72 72` viewBox 收紧为 `10 10 52 52`，减少透明留白。APNs 图标由用户提供的 1254×1254 PNG 按 Alpha ≥16 的图案边界裁去外围留白，边界外保留 4 像素，再使用 Lanczos 缩至最长边 236 像素并居中放入 256×256 透明画布。两者均保留透明通道，使图案实际占比接近其他图标。
+GitHub 单色图标使用 [github.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/github.svg) 渲染为 144×144 的 `icons/GitHub_monochrome.png`，SVG 快照和校验值保存在 `source/icons/`，可通过图标渲染脚本重建。渲染时将原始 `0 0 72 72` viewBox 收紧为 `10 10 52 52`，减少透明留白。APNs 图标由用户提供的 1254×1254 PNG 按 Alpha ≥16 的图案边界裁去外围留白，边界外保留 4 像素，再使用 Lanczos 缩至最长边 133 像素并居中放入 144×144 透明画布。两者均保留透明通道，使图案实际占比接近其他图标。
 
 全局设置 `default_proxy_group: 全部节点` 和 `default_subscription_group: 全部节点`，添加节点和订阅时统一使用该组。
 
