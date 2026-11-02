@@ -133,7 +133,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         }
     ]
     for original in src["proxy-groups"]:
-        if original["name"] == "直连" or original["name"].endswith("-自动选择"):
+        if original["name"] in ("直连", "FCM") or original["name"].endswith("-自动选择"):
             continue
         kind = {"url-test": "auto_test", "load-balance": "load_balance"}.get(
             original["type"], original["type"]
@@ -176,6 +176,16 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             group["tolerance"] = original["tolerance"]
         if kind == "load_balance":
             group["algorithm"] = "hash"
+        if group["name"] == "Apple":
+            groups.append(
+                {
+                    "select": {
+                        "name": "APNs",
+                        "policies": list(group["policies"]),
+                        "icon": f"{raw_base}/icons/APNs.png",
+                    }
+                }
+            )
         groups.append({kind: group})
 
     nsfw_group = {
@@ -304,7 +314,9 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             "180.184.2.2",
         )
     ]
-    profile["rules"] = dns_rules
+    profile["rules"] = dns_rules + [
+        rule({"domain_suffix": {"match": "push.apple.com"}}, "APNs")
+    ]
     skipped = []
     for original in src["rules"]:
         parts = original.split(",")
@@ -332,9 +344,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         elif kind == "RULE-SET":
             name, policy = parts[1:3]
             policy = policy_name(policy)
-            if name == "cryptocurrency":
-                # Its merged reference is inserted with NSFW before the general
-                # proxy service sets, so their domains cannot shadow these lists.
+            if name in ("cryptocurrency", "googlefcm"):
+                # Crypto is inserted with NSFW; FCM has no dedicated route.
                 continue
             profile["rules"].append({"rule_set": {**reference(name), "policy": policy}})
             if name == "private":

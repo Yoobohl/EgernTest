@@ -301,7 +301,19 @@ assert not (
 )
 assert not pcre2.compile(groups["其他节点"]["filter"]).match("Hong Kong 01")
 assert pcre2.compile(groups["其他节点"]["filter"]).match("德国 01")
-assert groups["FCM"]["policies"][0] == "DIRECT"
+assert "FCM" not in groups
+assert groups["APNs"]["policies"] == groups["Apple"]["policies"]
+assert groups["APNs"]["icon"] == RAW_BASE + "/icons/APNs.png"
+assert list(groups).index("APNs") + 1 == list(groups).index("Apple")
+apns_rule = {"domain_suffix": {"match": "push.apple.com", "policy": "APNs"}}
+assert profile["rules"].count(apns_rule) == 1
+assert profile["rules"].index(apns_rule) < next(
+    i for i, wrapped in enumerate(profile["rules"]) if "rule_set" in wrapped
+)
+assert not any(
+    wrapped.get("rule_set", {}).get("match", "").endswith("/googlefcm.yaml")
+    for wrapped in profile["rules"]
+)
 assert groups["AI"]["policies"][0] == "美国"
 
 
