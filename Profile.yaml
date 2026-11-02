@@ -463,6 +463,7 @@ policy_groups:
     name: AdBlock
     policies:
     - REJECT
+    - DIRECT
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/AdBlock.png
 - select:
     name: 漏网之鱼

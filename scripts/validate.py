@@ -324,6 +324,7 @@ for sample in ("香港 01", "美国 01", "德国 01", "Ukraine 01", "Debug 01", 
     assert not uk_regex.search(sample), sample
 assert not pcre2.compile(groups["其他节点"]["filter"]).match("Hong Kong 01")
 assert pcre2.compile(groups["其他节点"]["filter"]).match("德国 01")
+assert groups["AdBlock"]["policies"] == ["REJECT", "DIRECT"]
 assert "FCM" not in groups
 assert groups["APNs"]["policies"] == groups["Apple"]["policies"]
 assert groups["APNs"]["icon"] == RAW_BASE + "/icons/APNs.png"

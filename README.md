@@ -102,7 +102,7 @@ Profile 直接写出各项配置值，不使用 YAML 锚点与别名；生成脚
 | 五种 direct 节点及 IP 版本偏好 | 统一使用内置 `DIRECT`，不保留独立直连组；文档没有 direct 节点或 DIRECT 的对应 IP 偏好字段。 |
 | sticky-sessions 负载均衡 | 使用 Egern `hash`，并不完全等同原粘性会话算法。 |
 | default-selected | 把目标策略放在首位，导入后确认实际选中项。 |
-| AdBlock 的 REJECT-DROP / PASS | 只保留文档支持的 REJECT。关闭拦截时禁用或移除对应广告规则。 |
+| AdBlock 的 REJECT-DROP / PASS | 使用文档支持的 REJECT 和 DIRECT，顺序为 REJECT、DIRECT；可手动选择 DIRECT 让命中的广告域名直连。 |
 | empty-fallback、失败次数、懒测速 | 无官方对应字段，省略；不能保证无节点时与原配置相同。 |
 | 订阅名称前缀、类型排除、AGE 解密 | 无文档化一一对应字段，只保留名称过滤；多订阅应避免节点同名，并提供 Egern 可读取的订阅。 |
 | proxy-server-nameserver | Egern 的 `proxy_nameservers` 用于代理目标域名解析，作用不同于 mihomo 的节点服务器 DNS。当前显式设置阿里、腾讯 DoH，代理侧解析绕过 Forward 并强制直连。 |

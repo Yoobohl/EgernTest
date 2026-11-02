@@ -153,7 +153,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             if not name.endswith("-自动选择")
         ]
         if original["name"] == "AdBlock":
-            policies = ["REJECT"]
+            policies = ["REJECT", "DIRECT"]
         # No documented default-selected: preserve intended choice as first item.
         initial = policy_name(original.get("default-selected"))
         if initial in policies:
