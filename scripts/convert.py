@@ -264,6 +264,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         "vif_only": True,
         "hijack_dns": ["*"],
         "compat_route": True,
+        "include_all_networks": True,
+        "include_apns": True,
         "proxy_latency_test_url": TEST_URL,
         "direct_latency_test_url": TEST_URL,
         "modules": [
@@ -480,6 +482,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             "proxy_latency_test_url",
             "direct_latency_test_url",
             "compat_route",
+            "include_all_networks",
+            "include_apns",
             "dns",
             "proxies",
             "policy_groups",

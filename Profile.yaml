@@ -36,6 +36,8 @@ hijack_dns:
 proxy_latency_test_url: https://www.apple.com/library/test/success.html
 direct_latency_test_url: https://www.apple.com/library/test/success.html
 compat_route: true
+include_all_networks: true
+include_apns: true
 dns:
   bootstrap:
   - 223.5.5.5
