@@ -139,7 +139,7 @@ policy_groups:
     - 低倍率节点
     - 高倍率节点
     - 其他节点
-    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/GitHub.png
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/GitHub_monochrome.png
 - select:
     name: Microsoft
     policies:

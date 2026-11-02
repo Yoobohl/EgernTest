@@ -169,6 +169,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 group[field] = original[field]
         if group.get("icon", "").endswith(".svg"):
             group["icon"] = f"{raw_base}/icons/{Path(group['icon']).stem}.png"
+        if group["name"] == "GitHub":
+            group["icon"] = f"{raw_base}/icons/GitHub_monochrome.png"
         if kind in ("auto_test", "load_balance"):
             group["interval"] = original["interval"]
             group["timeout"] = original["timeout"] // 1000
