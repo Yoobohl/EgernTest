@@ -34,7 +34,12 @@ fs.mkdirSync(output, { recursive: true });
 /** @type {RenderedIcon[]} */
 const manifest = [];
 for (const source of sources) {
-  const svg = fs.readFileSync(path.join(root, 'source/icons/svg', source.name));
+  const originalSvg = fs.readFileSync(path.join(root, 'source/icons/svg', source.name));
+  // 单色 GitHub 的原始 72×72 viewBox 中，图案仅占约 48×48。
+  // 渲染时收紧画布到 52×52，保留少量边距，使视觉大小接近其他图标。
+  const svg = source.name === 'GitHub_monochrome.svg'
+    ? Buffer.from(originalSvg.toString('utf8').replace('viewBox="0 0 72 72"', 'viewBox="10 10 52 52"'))
+    : originalSvg;
   /** @type {string[]} */
   const fontFiles = [];
   // 固定字体文件，避免不同机器自动回退字体导致文字和 PNG 校验值变化。
@@ -59,7 +64,7 @@ for (const source of sources) {
   manifest.push({
     name,
     source: source.url,
-    svg_sha256: crypto.createHash('sha256').update(svg).digest('hex'),
+    svg_sha256: crypto.createHash('sha256').update(originalSvg).digest('hex'),
     png_sha256: crypto.createHash('sha256').update(png).digest('hex'),
     width: rendered.width,
     height: rendered.height,
