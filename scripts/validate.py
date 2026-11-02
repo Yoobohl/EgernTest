@@ -1,15 +1,21 @@
-"""Validate native Egern rule sets and references."""
+"""校验生成物的结构、引用、域名匹配语义和官方 MRS 往返结果。
+
+按顺序执行各阶段断言，任何阶段失败即停止；不联网获取新快照。
+末尾的往返转换只写入临时目录，不修改已保存的规则集和来源文件。
+"""
 
 import ipaddress
 import json
 import subprocess
 import tempfile
+from collections.abc import Mapping, Sequence
 from pathlib import Path
+from typing import Any
 
 import pcre2
 import yaml
-from classical_to_egern import parse_classical, suffix_covered
-from convert import RAW_BASE
+from classical_to_egern import DomainSet, parse_classical, suffix_covered
+from convert import RAW_BASE, ConfigEntry, ConfigFields
 from mrs_to_egern import (
     DEFAULT_MIHOMO,
     check_version,
@@ -20,13 +26,16 @@ from mrs_to_egern import (
 )
 from PIL import Image
 
+# 配置来自 YAML，字段值在下方各阶段检查；包装规则共享构建脚本的类型。
 root = Path(__file__).resolve().parent.parent
-profile = yaml.safe_load((root / "Profile.yaml").read_text(encoding="utf-8"))
+profile: ConfigFields = yaml.safe_load(
+    (root / "Profile.yaml").read_text(encoding="utf-8")
+)
 assert not any(
     isinstance(token, (yaml.tokens.AnchorToken, yaml.tokens.AliasToken))
     for token in yaml.scan((root / "Profile.yaml").read_text(encoding="utf-8"))
 )
-groups = {
+groups: dict[str, ConfigFields] = {
     next(iter(g.values()))["name"]: next(iter(g.values()))
     for g in profile["policy_groups"]
 }
@@ -43,7 +52,8 @@ for name, group in groups.items():
         assert group["urls"] is groups["全部节点"]["urls"]
 
 
-def visit(name, active):
+def visit(name: str, active: set[str]) -> None:
+    """沿当前递归路径检查策略引用环；跨不同路径复用同一个组是合法的。"""
     assert name not in active, name
     for child in groups[name].get("policies", []):
         if child in groups:
@@ -71,7 +81,8 @@ for name in (
     assert groups[name]["flatten"] is True
     assert "urls" not in groups[name]
 
-sets = {}
+# 检查规则集字段、重复项、CIDR 和正则；集合顶层还允许 no_resolve。
+sets: dict[str, ConfigFields] = {}
 count = 0
 for path in (root / "rulesets").glob("*.yaml"):
     data = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -104,13 +115,15 @@ assert len(sets) == 48
 assert "epicgames" not in sets
 
 
-def resolve(url):
+def resolve(url: str) -> Path:
+    """将本站 CDN 地址映射到本地文件，检查引用存在而不依赖网络请求。"""
     assert url.startswith(RAW_BASE + "/"), url
     path = root / url.removeprefix(RAW_BASE + "/")
     assert path.is_file(), path
     return path
 
 
+# 清单中的原始 SVG 渲染图标有固定尺寸和校验值；手工新增图标只核对引用。
 icon_manifest = json.loads(
     (root / "source/icons/manifest.json").read_text(encoding="utf-8")
 )
@@ -131,10 +144,14 @@ for group in groups.values():
         resolve(group["icon"])
 
 
-refs = []
+refs: list[Path] = []
 
 
-def validate_condition(wrapped):
+def validate_condition(wrapped: ConfigEntry) -> None:
+    """递归检查路由条件和策略引用，并收集逻辑规则内的远程集合引用。
+
+    no_resolve 属于集合内容，而非远程 rule_set 引用字段。
+    """
     assert len(wrapped) == 1
     kind, item = next(iter(wrapped.items()))
     assert kind in {
@@ -235,9 +252,11 @@ assert profile["compat_route"] is True
 assert "http_port" not in profile and "socks_port" not in profile
 assert groups["NSFW"]["icon"] == RAW_BASE + "/icons/nsfw_diamond.png"
 
-resources = json.loads((root / "source/manifest.json").read_text(encoding="utf-8"))[
-    "resources"
-]
+# 固定来源校验值后，逐条证明官方导出项仍被 Egern 集合覆盖。
+# 合并可能删除冗余精确域名，因此不能只比较条目数量或字符串相等。
+resources: list[dict[str, Any]] = json.loads(
+    (root / "source/manifest.json").read_text(encoding="utf-8")
+)["resources"]
 source_count = 0
 for resource in resources:
     name = resource["name"]
@@ -276,6 +295,7 @@ assert {k: v for k, v in sets["cn_ip-no-resolve"].items() if k != "no_resolve"} 
     "cn_ip"
 ]
 
+# 覆盖根域、子域、大小写和标签边界，避免通配符转换扩大匹配范围。
 samples = {
     "+.example.com": (
         {"example.com", "a.example.com", "a.b.example.com", "EXAMPLE.COM"},
@@ -344,7 +364,8 @@ assert groups["AI"]["policies"][0] == "美国"
 
 
 # Verify merge semantics against the unmodified union, including boundaries.
-def matches(domain, sources):
+def matches(domain: str, sources: Sequence[Mapping[str, list[str]]]) -> bool:
+    """按精确域名、标签后缀和关键词模拟纯域名集合的匹配并集。"""
     domain = domain.lower()
     return any(
         domain in data.get("domain_set", [])
@@ -362,16 +383,16 @@ supplemental = json.loads((root / "source/manifest.json").read_text(encoding="ut
 ]
 nsfw, nsfw_info = parse_classical(root / "source/classical/nsfw.list")
 web3, web3_info = parse_classical(root / "source/classical/web3.list")
-crypto_original = native_set(
+crypto_original: DomainSet = native_set(
     (root / "source/text/cryptocurrency.txt").read_text(encoding="utf-8").splitlines(),
     "domain",
 )
 for name, inputs in (("nsfw", [nsfw]), ("cryptocurrency", [crypto_original, web3])):
-    samples = set()
+    merge_samples: set[str] = set()
     for data in inputs:
         for entries in data.values():
             for entry in entries:
-                samples.update(
+                merge_samples.update(
                     {
                         entry,
                         entry.upper(),
@@ -380,7 +401,7 @@ for name, inputs in (("nsfw", [nsfw]), ("cryptocurrency", [crypto_original, web3
                         entry + ".invalid",
                     }
                 )
-    for sample in samples:
+    for sample in merge_samples:
         assert matches(sample, inputs) == matches(sample, [sets[name]]), (name, sample)
     assert supplemental[name]["output_count"] == sum(
         len(v) for v in sets[name].values()

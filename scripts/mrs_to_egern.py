@@ -10,8 +10,9 @@ import ipaddress
 import re
 import struct
 import subprocess
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import yaml
 import zstandard
@@ -20,8 +21,15 @@ ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MIHOMO = ROOT / ".cache/mihomo-v1.19.32/mihomo-windows-amd64-v1.exe"
 VERSION = "v1.19.32"
 
+# MRS 的头部只区分域名和 IP 两种行为；IP 的版本在读取 CIDR 时判断。
+Behavior = Literal["domain", "ipcidr"]
+# Egern 原生集合包含字符串列表，以及可选的布尔字段 no_resolve。
+# 动态字段名在 native_set 中集中构造，调用方不直接解释 MRS 二进制。
+NativeRuleSet = dict[str, Any]
 
-def check_version(mihomo):
+
+def check_version(mihomo: Path) -> str:
+    """检查官方转换器版本，返回完整版本字符串；不匹配时拒绝转换。"""
     result = subprocess.run(
         [str(mihomo), "-v"],
         check=True,
@@ -35,7 +43,8 @@ def check_version(mihomo):
     return result.stdout.strip()
 
 
-def read_header(path):
+def read_header(path: Path) -> tuple[Behavior, int]:
+    """读取压缩流头部，返回规则行为和 MRS 插入计数，不解码规则内容。"""
     with (
         path.open("rb") as stream,
         zstandard.ZstdDecompressor().stream_reader(stream) as reader,
@@ -43,7 +52,10 @@ def read_header(path):
         header = reader.read(21)
     if len(header) != 21 or header[:4] != b"MRS\x01":
         raise ValueError(f"Not an MRS v1 file: {path}")
-    behavior = {0: "domain", 1: "ipcidr"}.get(header[4])
+    # 解压后的固定头为 magic(4) + behavior(1) + count(8) + extra_length(8)。
+    # 两个计数字段采用大端、有符号 64 位整数；后续内容交给 mihomo 解释。
+    behaviors: dict[int, Behavior] = {0: "domain", 1: "ipcidr"}
+    behavior = behaviors.get(header[4])
     if behavior is None:
         raise ValueError(f"Unsupported MRS behavior: {header[4]}")
     count, extra_length = struct.unpack_from(">qq", header, 5)
@@ -52,7 +64,17 @@ def read_header(path):
     return behavior, count
 
 
-def dump_mrs(path, target, mihomo=DEFAULT_MIHOMO, behavior=None):
+def dump_mrs(
+    path: Path,
+    target: Path,
+    mihomo: Path = DEFAULT_MIHOMO,
+    behavior: str | None = None,
+) -> tuple[list[str], Behavior, int]:
+    """调用官方 DumpMrs，写入文本并返回条目、实际行为和原始插入计数。
+
+    插入计数可以大于导出条目数，因为官方实现会合并重复域名或 IP 范围。
+    behavior 只用于核对调用方预期；实际转换类型始终取自文件头。
+    """
     actual_behavior, count = read_header(path)
     if behavior is not None and behavior != actual_behavior:
         raise ValueError(
@@ -80,7 +102,12 @@ def dump_mrs(path, target, mihomo=DEFAULT_MIHOMO, behavior=None):
     return entries, actual_behavior, count
 
 
-def domain_pattern(domain):
+def domain_pattern(domain: str) -> str:
+    r"""将 mihomo 域名模式转换为不带锚点的正则。
+
+    +.example.com 包含根域及子域，.example.com 仅包含子域；
+    单个 * 只匹配一个非空标签，因此不能直接替换为 .*。
+    """
     prefix = ""
     if domain.startswith("+."):
         prefix, domain = r"(?:[^.]+\.)*", domain[2:]
@@ -91,13 +118,20 @@ def domain_pattern(domain):
     )
 
 
-def native_set(entries, behavior, no_resolve=False):
+def native_set(
+    entries: Iterable[str], behavior: str, no_resolve: bool = False
+) -> NativeRuleSet:
+    """按 Egern 字段分类官方文本条目，保留首次出现顺序并去重。
+
+    精确域名和普通后缀使用原生集合；带通配符的条目使用完整匹配正则。
+    no_resolve 只适用于 IP 集合，表示规则匹配时不额外触发 DNS 解析。
+    """
     if behavior not in {"domain", "ipcidr"}:
         raise ValueError(f"Unsupported behavior: {behavior}")
     if no_resolve and behavior != "ipcidr":
         raise ValueError("no_resolve only applies to IP rule sets")
-    result: dict[str, Any] = {"no_resolve": True} if no_resolve else {}
-    seen = set()
+    result: NativeRuleSet = {"no_resolve": True} if no_resolve else {}
+    seen: set[str] = set()
     for entry in entries:
         if entry in seen:
             continue
@@ -116,7 +150,13 @@ def native_set(entries, behavior, no_resolve=False):
     return result
 
 
-def write_native(path, entries, behavior, no_resolve=False):
+def write_native(
+    path: Path,
+    entries: Iterable[str],
+    behavior: str,
+    no_resolve: bool = False,
+) -> None:
+    """创建目标目录并写出 UTF-8/LF 的 Egern 原生规则集。"""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         yaml.safe_dump(
@@ -130,11 +170,13 @@ def write_native(path, entries, behavior, no_resolve=False):
     )
 
 
-def sha256(path):
+def sha256(path: Path) -> str:
+    """计算文件字节的 SHA256，用于快照和生成物的完整性核对。"""
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def main():
+def main() -> None:
+    """解析单文件转换参数，防止输入、文本和 YAML 输出互相覆盖。"""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path)
     parser.add_argument("output", type=Path)

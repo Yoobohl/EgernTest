@@ -6,8 +6,9 @@ MRS is exported by the official mihomo v1.19.32 convert-ruleset command.
 
 import argparse
 import json
+from collections.abc import Mapping, Sequence
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeVar, overload
 
 import yaml
 from classical_to_egern import add_supplemental_sets
@@ -26,22 +27,50 @@ TEST_URL = "https://www.apple.com/library/test/success.html"
 RAW_BASE = "https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main"
 
 
+# YAML/JSON 边界包含多种字段值，使用 Any 保留外部配置的扩展字段。
+# 包装层始终只有一个键，如 {"select": {...}} 或 {"domain": {...}}。
+ConfigFields = dict[str, Any]
+ConfigEntry = dict[str, ConfigFields]
+Value = TypeVar("Value")
+
+
 class NoAliasDumper(yaml.SafeDumper):
-    def ignore_aliases(self, data):
+    """直接输出重复值，避免 Egern 配置中出现 YAML 锚点与别名。"""
+
+    def ignore_aliases(self, data: object) -> bool:
+        """覆盖 PyYAML 别名判断，不依据对象是否被多处引用生成别名。"""
         return True
 
 
-def policy_name(name):
+@overload
+def policy_name(name: str) -> str: ...
+
+
+@overload
+def policy_name(name: None) -> None: ...
+
+
+def policy_name(name: str | None) -> str | None:
+    """统一旧直连组名称；缺失的默认选择继续保持 None。"""
     return "DIRECT" if name == "直连" else name
 
 
-def rule(condition, policy):
+def rule(condition: ConfigEntry, policy: str) -> ConfigEntry:
+    """为单键条件包装添加路由策略，不修改传入的条件字典。"""
     kind, value = next(iter(condition.items()))
     return {kind: {**value, "policy": policy_name(policy)}}
 
 
-def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
-    src = yaml.safe_load((SOURCE / "mihomoConfig.yaml").read_text(encoding="utf-8"))
+def build(raw_base: str = RAW_BASE, mihomo: Path = DEFAULT_MIHOMO) -> None:
+    """从本地快照重建 Profile、规则集、Real IP 模块和来源清单。
+
+    本函数会覆盖生成物，但不会联网更新上游快照。处理顺序为：
+    官方 MRS 导出 → 合并补充规则 → 生成策略/DNS/路由 → 排序并写文件。
+    路由列表顺序决定匹配优先级，字段排序阶段只调整字典键的顺序。
+    """
+    src: ConfigFields = yaml.safe_load(
+        (SOURCE / "mihomoConfig.yaml").read_text(encoding="utf-8")
+    )
     version_output = check_version(mihomo)
     downloads = {
         item["name"]: item
@@ -49,8 +78,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             (SOURCE / "mrs-downloads.json").read_text(encoding="utf-8")
         )
     }
-    entries = {}
-    manifest = []
+    entries: dict[str, list[str]] = {}
+    manifest: list[ConfigFields] = []
     for name, provider in src["rule-providers"].items():
         if name == "epicgames":
             continue
@@ -77,10 +106,11 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 "text_sha256": sha256(text_path),
             }
         )
+    # 国内 IP 另生成不触发 DNS 的副本，供 UDP/443 逻辑规则使用。
     write_native(
         ROOT / "rulesets/cn_ip-no-resolve.yaml", entries["cn_ip"], "ipcidr", True
     )
-    supplemental = add_supplemental_sets(ROOT)
+    supplemental: ConfigFields = add_supplemental_sets(ROOT)
     # Preserve user additions separately from the original MRS snapshot.
     douyin_extra_path = SOURCE / "douyin-extra.yaml"
     douyin_extra = yaml.safe_load(douyin_extra_path.read_text(encoding="utf-8"))
@@ -118,7 +148,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         encoding="utf-8",
     )
 
-    def reference(name):
+    def reference(name: str) -> ConfigFields:
+        """生成路由和 DNS 共用的远程集合引用，不在这里指定策略。"""
         return {"match": f"{raw_base}/rulesets/{name}.yaml", "update_interval": 86400}
 
     # Subscription is entered once, then flattened and filtered by consumer groups.
@@ -127,7 +158,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         r"|united\s*kingdom|great\s*britain|britain)"
     )
     exclude = src["global_exclude_filter"]["exclude-filter"].removeprefix("(?i)")
-    groups = [
+    groups: list[ConfigEntry] = [
         {
             "select": {
                 "name": "全部节点",
@@ -185,12 +216,14 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             group["icon"] = f"{raw_base}/icons/GitHub_monochrome.png"
         if kind in ("auto_test", "load_balance"):
             group["interval"] = original["interval"]
+            # mihomo 的 timeout 单位是毫秒，Egern 的 timeout 单位是秒。
             group["timeout"] = original["timeout"] // 1000
         if kind == "auto_test":
             group["tolerance"] = original["tolerance"]
         if kind == "load_balance":
             group["algorithm"] = "hash"
         if group["name"] == "Apple":
+            # 复制列表，避免后续插入英国选项时同时修改两个组的候选项。
             groups.append(
                 {
                     "select": {
@@ -214,7 +247,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 }
             )
 
-    nsfw_group = {
+    nsfw_group: ConfigEntry = {
         "select": {
             "name": "NSFW",
             "policies": [
@@ -235,11 +268,11 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         if "台湾" in policies:
             policies.insert(policies.index("台湾") + 1, "英国")
 
-    forward = []
+    forward: list[ConfigEntry] = []
     for name, value in (("private", "system"), ("douyin", "douyin"), ("cn", "china")):
         forward.append({"proxy_rule_set": {**reference(name), "value": value}})
     forward.append({"domain_wildcard": {"match": "*", "value": "foreign"}})
-    hosts = {}
+    hosts: dict[str, list[str]] = {}
     for domain, values in src["hosts"].items():
         if domain.startswith("+."):
             hosts[domain[2:]] = values
@@ -249,7 +282,9 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         if domain == "doh.pub":
             hosts["dns.alidns.com"] = ["223.5.5.5", "223.6.6.6"]
     hosts["doh.pub"] = ["1.12.12.12", "120.53.53.53"]
-    real_ip = []
+    # Egern Real IP 模块使用 glob；+.foo 必须展开为 foo 和 *.foo。
+    # FCM 专用路由虽已移除，其原有 Real IP 排除项仍保留。
+    real_ip: list[str] = []
     for name in ("private", "fakeip_filter", "geolocation-cn", "googlefcm"):
         for domain in entries[name]:
             if domain.startswith("+."):
@@ -321,7 +356,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         "rules": [],
     }
     # Explicit DNS endpoint routing replaces Mihomo's '#policy' annotations.
-    dns_rules = [
+    dns_rules: list[ConfigEntry] = [
         rule({"domain": {"match": domain}}, "默认代理")
         for domain in ("cloudflare-dns.com", "dns.google")
     ]
@@ -347,7 +382,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         )
     ]
     profile["rules"] = dns_rules
-    skipped = []
+    skipped: list[str] = []
     for original in src["rules"]:
         parts = original.split(",")
         kind = parts[0]
@@ -355,6 +390,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             skipped.append(original)
             continue
         if kind == "AND":
+            # 上游的固定复合规则：拒绝非国内目标的 UDP/443。
+            # 在此显式还原结构，避免用逗号拆分解析嵌套逻辑表达式。
             exempt = [
                 {"rule_set": reference("cn_additional")},
                 {"rule_set": reference("cn_ip-no-resolve")},
@@ -378,6 +415,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 # Crypto is inserted with NSFW; FCM and Epic have no dedicated routes.
                 continue
             if name == "apple_cn":
+                # Apple CN 包含部分 push 子域，APNs 必须先匹配。
                 profile["rules"].append(
                     rule({"domain_suffix": {"match": "push.apple.com"}}, "APNs")
                 )
@@ -409,12 +447,13 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             profile["rules"].append(rule({translated: {"match": parts[1]}}, parts[2]))
 
     # Follow the field order used by the reference Egern export.
-    def ordered(values, keys):
-        return {
-            key: values[key]
-            for key in (*keys, *(key for key in values if key not in keys))
-            if key in values
-        }
+    def ordered(values: Mapping[str, Value], keys: Sequence[str]) -> dict[str, Value]:
+        """按模板键排序，未列出的字段仍按原始顺序追加，绝不丢弃字段。"""
+        result = {key: values[key] for key in keys if key in values}
+        for key, value in values.items():
+            if key not in result:
+                result[key] = value
+        return result
 
     profile["dns"] = ordered(
         profile["dns"],
@@ -462,7 +501,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         for kind, group in wrapped.items()
     ]
 
-    def order_rule(wrapped):
+    def order_rule(wrapped: ConfigEntry) -> ConfigEntry:
+        """递归排序规则字段；and/or 含条件列表，not 只含一个条件。"""
         kind, fields = next(iter(wrapped.items()))
         fields = ordered(fields, ("match", "policy", "no_resolve", "update_interval"))
         if kind in ("and", "or"):
