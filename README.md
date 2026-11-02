@@ -21,7 +21,7 @@ urls:
 
 首次加载后确认选择：AI / PayPal / EHentai 为美国；TikTok / Crypto 为日本；Patreon 为香港。相应策略已放在列表首位，但首次是否自动选中需在设备上确认。
 
-已移除 FCM 策略组及其专用路由规则。在 Apple 上方添加 APNs 策略组，候选策略及顺序与 Apple 一致，使用 `icons/APNs.png` 图标；`push.apple.com` 及其子域名通过位于远程规则集之前的 `domain_suffix` 规则走 APNs。
+已移除 FCM 策略组及其专用路由规则。在 Apple 上方添加 APNs 策略组，候选策略及顺序与 Apple 一致，使用 `icons/APNs.png` 图标；`push.apple.com` 及其子域名通过位于 `apple_cn.yaml` 紧前面的 `domain_suffix` 规则走 APNs。
 
 直连规则和各策略组中的直连选项统一使用 Egern 内置的 `DIRECT`，不再设置单独的“直连”策略组。
 

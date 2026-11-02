@@ -314,9 +314,7 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             "180.184.2.2",
         )
     ]
-    profile["rules"] = dns_rules + [
-        rule({"domain_suffix": {"match": "push.apple.com"}}, "APNs")
-    ]
+    profile["rules"] = dns_rules
     skipped = []
     for original in src["rules"]:
         parts = original.split(",")
@@ -347,6 +345,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             if name in ("cryptocurrency", "googlefcm"):
                 # Crypto is inserted with NSFW; FCM has no dedicated route.
                 continue
+            if name == "apple_cn":
+                profile["rules"].append(
+                    rule({"domain_suffix": {"match": "push.apple.com"}}, "APNs")
+                )
             profile["rules"].append({"rule_set": {**reference(name), "policy": policy}})
             if name == "private":
                 profile["rules"].append(

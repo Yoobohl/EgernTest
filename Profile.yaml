@@ -656,9 +656,6 @@ rules:
     match: 180.184.2.2/32
     no_resolve: true
     policy: DIRECT
-- domain_suffix:
-    match: push.apple.com
-    policy: APNs
 - domain:
     match: cdn.jsdmirror.com
     policy: DIRECT
@@ -686,6 +683,9 @@ rules:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nvidia_cn.yaml
     update_interval: 86400
     policy: DIRECT
+- domain_suffix:
+    match: push.apple.com
+    policy: APNs
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple_cn.yaml
     update_interval: 86400
