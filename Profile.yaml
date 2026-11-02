@@ -43,6 +43,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 手动选择
@@ -88,6 +89,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -104,6 +106,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -120,6 +123,7 @@ policy_groups:
     - 日本
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -136,6 +140,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -153,6 +158,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -170,6 +176,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -187,6 +194,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -203,6 +211,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -220,6 +229,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -236,6 +246,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -252,6 +263,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -268,6 +280,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -284,6 +297,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -300,6 +314,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -317,6 +332,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -334,6 +350,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -351,6 +368,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -367,6 +385,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -383,6 +402,7 @@ policy_groups:
     - 日本
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -399,6 +419,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -416,6 +437,7 @@ policy_groups:
     - 日本
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -432,6 +454,7 @@ policy_groups:
     - 美国
     - 新加坡
     - 台湾
+    - 英国
     - 低倍率节点
     - 高倍率节点
     - 其他节点
@@ -483,6 +506,13 @@ policy_groups:
     - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Taiwan.png
 - select:
+    name: 英国
+    flatten: true
+    filter: (?i)(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain)
+    policies:
+    - 全部节点
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/United_Kingdom.png
+- select:
     name: 低倍率节点
     flatten: true
     filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<![\d.])0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
@@ -499,7 +529,7 @@ policy_groups:
 - select:
     name: 其他节点
     flatten: true
-    filter: (?i)^(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
+    filter: (?i)^(?!.*(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     policies:
     - 全部节点
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/WorldMap.png

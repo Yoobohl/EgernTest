@@ -62,6 +62,7 @@ for name in (
     "美国",
     "新加坡",
     "台湾",
+    "英国",
     "低倍率节点",
     "高倍率节点",
     "其他节点",
@@ -299,6 +300,27 @@ assert not (
     pcre2.compile(groups["全部节点"]["filter"]).match("香港 剩余流量")
     and pcre2.compile(groups["香港"]["filter"]).match("香港 剩余流量")
 )
+assert list(groups).index("台湾") + 1 == list(groups).index("英国")
+assert groups["英国"]["icon"] == RAW_BASE + "/icons/United_Kingdom.png"
+uk_regex = pcre2.compile(groups["英国"]["filter"])
+other_regex = pcre2.compile(groups["其他节点"]["filter"])
+for sample in (
+    "🇬🇧 01",
+    "英国 01",
+    "伦敦 01",
+    "曼彻斯特 01",
+    "UK 01",
+    "uk-01",
+    "GB 01",
+    "GBR 01",
+    "United Kingdom 01",
+    "Great Britain 01",
+    "Britain 01",
+):
+    assert uk_regex.search(sample), sample
+    assert not other_regex.search(sample), sample
+for sample in ("香港 01", "美国 01", "德国 01", "Ukraine 01", "Debug 01", "GBRouter"):
+    assert not uk_regex.search(sample), sample
 assert not pcre2.compile(groups["其他节点"]["filter"]).match("Hong Kong 01")
 assert pcre2.compile(groups["其他节点"]["filter"]).match("德国 01")
 assert "FCM" not in groups

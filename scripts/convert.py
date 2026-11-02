@@ -120,6 +120,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         return {"match": f"{raw_base}/rulesets/{name}.yaml", "update_interval": 86400}
 
     # Subscription is entered once, then flattened and filtered by consumer groups.
+    uk_filter = (
+        r"(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])"
+        r"|united\s*kingdom|great\s*britain|britain)"
+    )
     exclude = src["global_exclude_filter"]["exclude-filter"].removeprefix("(?i)")
     groups = [
         {
@@ -133,7 +137,9 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         }
     ]
     for original in src["proxy-groups"]:
-        if original["name"] in ("直连", "FCM") or original["name"].endswith("-自动选择"):
+        if original["name"] in ("直连", "FCM") or original["name"].endswith(
+            "-自动选择"
+        ):
             continue
         kind = {"url-test": "auto_test", "load-balance": "load_balance"}.get(
             original["type"], original["type"]
@@ -162,6 +168,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                     + original["exclude-filter"].removeprefix("(?i)")
                     + ").*$"
                 )
+        if group["name"] == "其他节点":
+            group["filter"] = (
+                "(?i)^(?!.*" + uk_filter + ")" + group["filter"].removeprefix("(?i)^")
+            )
         if policies:
             group["policies"] = policies
         for field in ("icon", "hidden"):
@@ -189,6 +199,18 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
                 }
             )
         groups.append({kind: group})
+        if group["name"] == "台湾":
+            groups.append(
+                {
+                    "select": {
+                        "name": "英国",
+                        "flatten": True,
+                        "filter": "(?i)" + uk_filter,
+                        "policies": ["全部节点"],
+                        "icon": f"{raw_base}/icons/United_Kingdom.png",
+                    }
+                }
+            )
 
     nsfw_group = {
         "select": {
@@ -206,6 +228,10 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         if next(iter(group.values()))["name"] == "EHentai"
     )
     groups.insert(ehentai_index + 1, nsfw_group)
+    for wrapped in groups:
+        policies = next(iter(wrapped.values())).get("policies", [])
+        if "台湾" in policies:
+            policies.insert(policies.index("台湾") + 1, "英国")
 
     forward = []
     for name, value in (("private", "system"), ("douyin", "douyin"), ("cn", "china")):
