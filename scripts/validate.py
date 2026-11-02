@@ -127,7 +127,7 @@ def resolve(url: str) -> Path:
 icon_manifest = json.loads(
     (root / "source/icons/manifest.json").read_text(encoding="utf-8")
 )
-assert len(icon_manifest) == 37
+assert len(icon_manifest) == 38
 for item in icon_manifest:
     path = root / "icons" / item["name"]
     assert sha256(path) == item["png_sha256"]

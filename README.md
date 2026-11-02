@@ -41,7 +41,7 @@ urls:
 | `rulesets/*.yaml` | 46 个原规则集（已移除 Epic Games，Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 48 个文件。 |
 | `modules/real-ip-domains.yaml` | 用官方模块字段 `real_ip_domains` 保存原 Fake-IP 排除集合。 |
 | `modules/drcom-egern/` | 可独立安装的 Dr.COM 校园网流量小组件模块及其 CDN 脚本。 |
-| `icons/*.png` | 37 个 256×256、8-bit RGBA 图标，包含真实透明像素；Profile 只引用 PNG。 |
+| `icons/*.png` | 40 个 RGBA 图标：38 个 SVG 渲染图标及 APNs 为 256×256，Qure Color 英国旗帜为 144×144；Profile 只引用 PNG。 |
 | `source/icons/` | 原始 SVG、来源和 SVG/PNG 校验值，供重新渲染与核对。 |
 | `source/mrs/` | 全部 46 个实际 MRS 文件。 |
 | `source/text/` | 官方 mihomo v1.19.32 从 MRS 导出的 46 个文本文件。 |
@@ -77,6 +77,8 @@ IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末�
 测速地址仅设置全局 `proxy_latency_test_url` / `direct_latency_test_url`。组内只保留测速间隔、超时、容差等必要参数。
 
 图标由原 SVG 使用 `@resvg/resvg-js@2.6.2` 渲染为 PNG，透明画布不填充底色。全部 PNG 为 8-bit RGBA，Alpha 最小值 0、最大值 255，图形颜色和原有背景形状保持原样。Profile 不再引用 SVG；NSFW 使用 [nsfw_diamond.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/nsfw_diamond.svg) 转换出的 `icons/nsfw_diamond.png`。
+
+GitHub 单色图标使用 [github.svg](https://github.com/Yoobohl/proxy-profiles/blob/main/icons/github.svg) 渲染为 256×256 的 `icons/GitHub_monochrome.png`，SVG 快照和校验值保存在 `source/icons/`，可通过图标渲染脚本重建。APNs 图标由用户提供的 1254×1254 PNG 使用 Lanczos 缩小为 256×256，并保留透明通道。
 
 全局设置 `default_proxy_group: 全部节点` 和 `default_subscription_group: 全部节点`，添加节点和订阅时统一使用该组。
 
