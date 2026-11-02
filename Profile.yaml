@@ -28,12 +28,85 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+ipv6: false
+allow_external_connections: true
+vif_only: true
+hijack_dns:
+- '*'
+proxy_latency_test_url: https://www.apple.com/library/test/success.html
+direct_latency_test_url: https://www.apple.com/library/test/success.html
+compat_route: true
+dns:
+  bootstrap:
+  - 223.5.5.5
+  - 119.29.29.29
+  upstreams:
+    china:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    douyin:
+    - system
+    - 180.184.1.1
+    - 180.184.2.2
+    foreign:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
+  forward:
+  - proxy_rule_set:
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
+      update_interval: 86400
+      value: system
+  - proxy_rule_set:
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/douyin.yaml
+      update_interval: 86400
+      value: douyin
+  - proxy_rule_set:
+      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn.yaml
+      update_interval: 86400
+      value: china
+  - domain_wildcard:
+      match: '*'
+      value: foreign
+  hosts:
+    doh.pub:
+    - 1.12.12.12
+    - 120.53.53.53
+    dns.alidns.com:
+    - 223.5.5.5
+    - 223.6.6.6
+    cloudflare-dns.com:
+    - 1.1.1.1
+    - 1.0.0.1
+    dns.google:
+    - 8.8.8.8
+    - 8.8.4.4
+    services.googleapis.cn: services.googleapis.com
+    mcdn.bilivideo.com:
+    - 0.0.0.0
+    '*.mcdn.bilivideo.com':
+    - 0.0.0.0
+    mcdn.bilivideo.cn:
+    - 0.0.0.0
+    '*.mcdn.bilivideo.cn':
+    - 0.0.0.0
+    edge.mountaintoys.cn:
+    - 0.0.0.0
+    '*.edge.mountaintoys.cn':
+    - 0.0.0.0
+    h2.smtcdns.net:
+    - 0.0.0.0
+    '*.h2.smtcdns.net':
+    - 0.0.0.0
+  proxy_nameservers:
+  - https://dns.alidns.com/dns-query
+  - https://doh.pub/dns-query
+proxies: []
 policy_groups:
 - select:
     name: 全部节点
     urls: []
-    update_interval: 86400
     filter: (?i)^(?!.*(群|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|电报|频道|无法|说明|提示|访问|支持|教程|关注|更新|作者|加入|超时|收藏|优惠|福利|邀请|好友|失联|选择|剩余|公益|发布|DIZTNA|通路|登录|定时|渠道|牢记|永久|余额|阁下|本站|刷新|导航|建议|重置|以下|过滤|⚠️|@|t\.me\/\+|\bexpire\b|\bhttps?:\/\/|\.com|\btraffic\b)).*$
+    update_interval: 86400
     hidden: true
 - select:
     name: 默认代理
@@ -53,30 +126,30 @@ policy_groups:
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Proxy.png
 - select:
     name: 手动选择
-    flatten: true
     policies:
     - 全部节点
+    flatten: true
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Static.png
 - auto_test:
     name: 自动选择
-    flatten: true
     policies:
     - 全部节点
+    flatten: true
+    interval: 600
+    tolerance: 50
+    timeout: 3
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Auto.png
     hidden: true
-    interval: 600
-    timeout: 3
-    tolerance: 50
 - load_balance:
     name: 负载均衡
-    flatten: true
     policies:
     - 全部节点
-    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/RoundRobin.png
-    hidden: true
+    algorithm: hash
+    flatten: true
     interval: 600
     timeout: 3
-    algorithm: hash
+    icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/RoundRobin.png
+    hidden: true
 - select:
     name: YouTube
     policies:
@@ -473,159 +546,67 @@ policy_groups:
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Stack.png
 - select:
     name: 香港
-    flatten: true
-    filter: (?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/HongKong.png
 - select:
     name: 日本
-    flatten: true
-    filter: (?i)(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Japan.png
 - select:
     name: 美国
-    flatten: true
-    filter: (?i)(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/America.png
 - select:
     name: 新加坡
-    flatten: true
-    filter: (?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Singapore.png
 - select:
     name: 台湾
-    flatten: true
-    filter: (?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Taiwan.png
 - select:
     name: 英国
-    flatten: true
-    filter: (?i)(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain)
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain)
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/United_Kingdom.png
 - select:
     name: 低倍率节点
-    flatten: true
-    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<![\d.])0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(^(?!.*(?:剩|期)).*(?:(?<![\d.])0(\.[0-5]|[*×✕✖⨯⨉x倍]))|(?:[*×✕✖⨯⨉x]0)|^(?!.*(?:客户端|软件)).*下载|低倍|免费|(?<![A-Za-z])free(?![A-Za-z]))
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Available.png
 - select:
     name: 高倍率节点
-    flatten: true
-    filter: (?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)(?:[*×✕✖⨯⨉x](?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?)|(?:(?<![\d.])(?:[2-9]\d*|[1-9]\d+)(?:\.\d+)?(?:倍|[*×✕✖⨯⨉x]))
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/Airport.png
 - select:
     name: 其他节点
-    flatten: true
-    filter: (?i)^(?!.*(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     policies:
     - 全部节点
+    flatten: true
+    filter: (?i)^(?!.*(🇬🇧|英国|伦敦|曼彻斯特|(?<![A-Za-z])(?:UK|GBR?)(?![A-Za-z])|united\s*kingdom|great\s*britain|britain))(?!.*(🇭🇰|香港|(?<![A-Za-z])HKG?(?![A-Za-z])|hong\s*kong|🇯🇵|日本|东京|大阪|京都|(?<![A-Za-z])JPN?(?![A-Za-z])|japan|🇺🇸|美国|纽约|洛杉矶|旧金山|芝加哥|休斯顿|迈阿密|西雅图|波士顿|华盛顿|拉斯维加斯|圣何塞|圣地亚哥|(?<![A-Za-z])USA?(?![A-Za-z])|america|united\s*states|🇸🇬|新加坡|狮城|(?<![A-Za-z])SGP?(?![A-Za-z])|singapore|🇹🇼|台湾|台北|高雄|(?<![A-Za-z])TWN?(?![A-Za-z])|taiwan)).*$
     icon: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/icons/WorldMap.png
-default_subscription_group: 全部节点
-ipv6: false
-allow_external_connections: true
-vif_only: true
-hijack_dns:
-- '*'
-compat_route: true
-proxy_latency_test_url: https://www.apple.com/library/test/success.html
-direct_latency_test_url: https://www.apple.com/library/test/success.html
-modules:
-- name: MyClash Real IP Domains
-  url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/real-ip-domains.yaml
-  update_interval: 86400
-  enabled: true
-- name: Dr.COM 校园网流量
-  url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml
-  update_interval: 86400
-  enabled: true
-- name: 中国移动（Hark 仪表盘版）
-  url: https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml
-  update_interval: 86400
-  enabled: true
-- name: 中国电信小组件
-  url: https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml
-  update_interval: 86400
-  enabled: true
-dns:
-  bootstrap:
-  - 223.5.5.5
-  - 119.29.29.29
-  proxy_nameservers:
-  - https://dns.alidns.com/dns-query
-  - https://doh.pub/dns-query
-  upstreams:
-    china:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-    douyin:
-    - system
-    - 180.184.1.1
-    - 180.184.2.2
-    foreign:
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.google/dns-query
-  forward:
-  - proxy_rule_set:
-      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
-      update_interval: 86400
-      value: system
-  - proxy_rule_set:
-      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/douyin.yaml
-      update_interval: 86400
-      value: douyin
-  - proxy_rule_set:
-      match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn.yaml
-      update_interval: 86400
-      value: china
-  - domain_wildcard:
-      match: '*'
-      value: foreign
-  hosts:
-    doh.pub:
-    - 1.12.12.12
-    - 120.53.53.53
-    dns.alidns.com:
-    - 223.5.5.5
-    - 223.6.6.6
-    cloudflare-dns.com:
-    - 1.1.1.1
-    - 1.0.0.1
-    dns.google:
-    - 8.8.8.8
-    - 8.8.4.4
-    services.googleapis.cn: services.googleapis.com
-    mcdn.bilivideo.com:
-    - 0.0.0.0
-    '*.mcdn.bilivideo.com':
-    - 0.0.0.0
-    mcdn.bilivideo.cn:
-    - 0.0.0.0
-    '*.mcdn.bilivideo.cn':
-    - 0.0.0.0
-    edge.mountaintoys.cn:
-    - 0.0.0.0
-    '*.edge.mountaintoys.cn':
-    - 0.0.0.0
-    h2.smtcdns.net:
-    - 0.0.0.0
-    '*.h2.smtcdns.net':
-    - 0.0.0.0
-proxies: []
-default_proxy_group: 全部节点
 rules:
 - domain:
     match: cloudflare-dns.com
@@ -635,20 +616,20 @@ rules:
     policy: 默认代理
 - ip_cidr:
     match: 1.1.1.1/32
-    no_resolve: true
     policy: 默认代理
+    no_resolve: true
 - ip_cidr:
     match: 1.0.0.1/32
-    no_resolve: true
     policy: 默认代理
+    no_resolve: true
 - ip_cidr:
     match: 8.8.8.8/32
-    no_resolve: true
     policy: 默认代理
+    no_resolve: true
 - ip_cidr:
     match: 8.8.4.4/32
-    no_resolve: true
     policy: 默认代理
+    no_resolve: true
 - domain:
     match: doh.pub
     policy: DIRECT
@@ -657,70 +638,70 @@ rules:
     policy: DIRECT
 - ip_cidr:
     match: 114.114.114.114/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 223.5.5.5/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 223.6.6.6/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 119.29.29.29/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 1.12.12.12/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 120.53.53.53/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 180.184.1.1/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - ip_cidr:
     match: 180.184.2.2/32
-    no_resolve: true
     policy: DIRECT
+    no_resolve: true
 - domain:
     match: cdn.jsdmirror.com
     policy: DIRECT
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/douyin.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/geolocation-cn.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/games_cn.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nvidia_cn.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - domain_suffix:
     match: push.apple.com
     policy: APNs
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple_cn.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft_cn.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - domain:
     match: fsend.cn
     policy: DIRECT
@@ -746,112 +727,112 @@ rules:
     policy: REJECT
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/category-ads.yaml
-    update_interval: 86400
     policy: AdBlock
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nsfw.yaml
-    update_interval: 86400
     policy: NSFW
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cryptocurrency.yaml
-    update_interval: 86400
     policy: Crypto
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/youtube.yaml
-    update_interval: 86400
     policy: YouTube
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/google.yaml
-    update_interval: 86400
     policy: Google
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/google_ip.yaml
-    update_interval: 86400
     policy: Google
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/ai.yaml
-    update_interval: 86400
     policy: AI
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/github.yaml
-    update_interval: 86400
     policy: GitHub
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft.yaml
-    update_interval: 86400
     policy: Microsoft
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/microsoft_ip.yaml
-    update_interval: 86400
     policy: Microsoft
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple.yaml
-    update_interval: 86400
     policy: Apple
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/apple_ip.yaml
-    update_interval: 86400
     policy: Apple
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/telegram.yaml
-    update_interval: 86400
     policy: Telegram
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/telegram_ip.yaml
-    update_interval: 86400
     policy: Telegram
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/steam.yaml
-    update_interval: 86400
     policy: Steam
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/steam_ip.yaml
-    update_interval: 86400
     policy: Steam
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/tiktok.yaml
-    update_interval: 86400
     policy: TikTok
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/tiktok_ip.yaml
-    update_interval: 86400
     policy: TikTok
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/twitter.yaml
-    update_interval: 86400
     policy: Twitter
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/twitter_ip.yaml
-    update_interval: 86400
     policy: Twitter
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/meta.yaml
-    update_interval: 86400
     policy: Meta
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/facebook_ip.yaml
-    update_interval: 86400
     policy: Meta
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/line.yaml
-    update_interval: 86400
     policy: Line
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/netflix.yaml
-    update_interval: 86400
     policy: Netflix
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/netflix_ip.yaml
-    update_interval: 86400
     policy: Netflix
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/emby.yaml
-    update_interval: 86400
     policy: Emby
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/emos.yaml
-    update_interval: 86400
     policy: Emby
+    update_interval: 86400
 - domain_suffix:
     match: mb3admin.com
     policy: Emby
@@ -863,39 +844,58 @@ rules:
     policy: Emby
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/pikpak.yaml
-    update_interval: 86400
     policy: PikPak
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/spotify.yaml
-    update_interval: 86400
     policy: Spotify
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/spotify_ip.yaml
-    update_interval: 86400
     policy: Spotify
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/paypal.yaml
-    update_interval: 86400
     policy: PayPal
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/patreon.yaml
-    update_interval: 86400
     policy: Patreon
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/ehentai.yaml
-    update_interval: 86400
     policy: EHentai
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/geolocation-!cn.yaml
-    update_interval: 86400
     policy: 默认代理
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/cn_ip.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/private_ip.yaml
-    update_interval: 86400
     policy: DIRECT
+    update_interval: 86400
 - default:
     policy: 漏网之鱼
+modules:
+- name: MyClash Real IP Domains
+  url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/real-ip-domains.yaml
+  update_interval: 86400
+  enabled: true
+- name: Dr.COM 校园网流量
+  url: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/modules/drcom-egern/drcom.module.yaml
+  update_interval: 86400
+  enabled: true
+- name: 中国移动（Hark 仪表盘版）
+  url: https://cdn.jsdmirror.com/gh/zhaohantao1360-hash/Hark@main/china-mobile-hark-dash.yaml
+  update_interval: 86400
+  enabled: true
+- name: 中国电信小组件
+  url: https://cdn.jsdmirror.com/gh/IBL3ND/module@main/ChinaTelecom_Widget.yaml
+  update_interval: 86400
+  enabled: true
+default_subscription_group: 全部节点
+default_proxy_group: 全部节点

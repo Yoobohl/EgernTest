@@ -406,13 +406,91 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
             }[kind]
             profile["rules"].append(rule({translated: {"match": parts[1]}}, parts[2]))
 
-    # Put policies and subscriptions at the start for convenient editing.
-    head = {
-        key: profile[key] for key in ("policy_groups", "default_subscription_group")
+    # Follow the field order used by the reference Egern export.
+    def ordered(values, keys):
+        return {
+            key: values[key]
+            for key in (*keys, *(key for key in values if key not in keys))
+            if key in values
+        }
+
+    profile["dns"] = ordered(
+        profile["dns"],
+        ("bootstrap", "upstreams", "forward", "hosts", "proxy_nameservers"),
+    )
+    group_fields = {
+        "select": (
+            "name",
+            "policies",
+            "urls",
+            "flatten",
+            "filter",
+            "update_interval",
+            "icon",
+            "hidden",
+        ),
+        "auto_test": (
+            "name",
+            "policies",
+            "urls",
+            "flatten",
+            "filter",
+            "interval",
+            "tolerance",
+            "timeout",
+            "icon",
+            "hidden",
+        ),
+        "load_balance": (
+            "name",
+            "policies",
+            "urls",
+            "algorithm",
+            "flatten",
+            "filter",
+            "interval",
+            "timeout",
+            "icon",
+            "hidden",
+        ),
     }
-    tail = {key: value for key, value in profile.items() if key not in head}
+    profile["policy_groups"] = [
+        {kind: ordered(group, group_fields[kind])}
+        for wrapped in profile["policy_groups"]
+        for kind, group in wrapped.items()
+    ]
+
+    def order_rule(wrapped):
+        kind, fields = next(iter(wrapped.items()))
+        fields = ordered(fields, ("match", "policy", "no_resolve", "update_interval"))
+        if kind in ("and", "or"):
+            fields["match"] = [order_rule(child) for child in fields["match"]]
+        elif kind == "not":
+            fields["match"] = order_rule(fields["match"])
+        return {kind: fields}
+
+    profile["rules"] = [order_rule(wrapped) for wrapped in profile["rules"]]
+    profile = ordered(
+        profile,
+        (
+            "ipv6",
+            "allow_external_connections",
+            "vif_only",
+            "hijack_dns",
+            "proxy_latency_test_url",
+            "direct_latency_test_url",
+            "compat_route",
+            "dns",
+            "proxies",
+            "policy_groups",
+            "rules",
+            "modules",
+            "default_subscription_group",
+            "default_proxy_group",
+        ),
+    )
     text = yaml.dump(
-        {**head, **tail},
+        profile,
         Dumper=NoAliasDumper,
         allow_unicode=True,
         sort_keys=False,
