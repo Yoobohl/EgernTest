@@ -1,6 +1,6 @@
 # MyClash → Egern
 
-根据 [AIsouler/MyClash 的 mihomo 全量配置](https://github.com/AIsouler/MyClash/blob/main/Config/mihomoConfig.yaml)转换。原作者 AIsouler；配置已同步至 2026-10-18 的上游提交 `badd718b81a7c541b574e975ba48d8ca7813759c`，规则快照仍读取于 2026-10-13（Asia/Taipei）。47 个基础规则集由实际 MRS 经官方 mihomo v1.19.32 `DumpMrs` 导出，另合入 Yoobohl/proxy-profiles 的 NSFW / Web3 classical 规则。
+根据 [AIsouler/MyClash 的 mihomo 全量配置](https://github.com/AIsouler/MyClash/blob/main/Config/mihomoConfig.yaml)转换。原作者 AIsouler；配置已同步至 2026-10-18 的上游提交 `badd718b81a7c541b574e975ba48d8ca7813759c`，规则快照仍读取于 2026-10-13（Asia/Taipei）。46 个基础规则集由实际 MRS 经官方 mihomo v1.19.32 `DumpMrs` 导出，另合入 Yoobohl/proxy-profiles 的 NSFW / Web3 classical 规则。
 
 配置、规则集、Real IP 模块与 PNG 图标统一托管在 [Yoobohl/EgernTest](https://github.com/Yoobohl/EgernTest)。
 
@@ -38,13 +38,13 @@ urls:
 | 文件 | 作用 |
 | --- | --- |
 | `Profile.yaml` | 全局参数、策略组、DNS、规则集和模块的远程引用，以及原有少量自定义规则。 |
-| `rulesets/*.yaml` | 47 个原规则集（Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 49 个文件。 |
+| `rulesets/*.yaml` | 46 个原规则集（已移除 Epic Games，Crypto 已与 Web3 合并）、CN IP 的 no-resolve 版本和 NSFW，共 48 个文件。 |
 | `modules/real-ip-domains.yaml` | 用官方模块字段 `real_ip_domains` 保存原 Fake-IP 排除集合。 |
 | `modules/drcom-egern/` | 可独立安装的 Dr.COM 校园网流量小组件模块及其 CDN 脚本。 |
 | `icons/*.png` | 37 个 256×256、8-bit RGBA 图标，包含真实透明像素；Profile 只引用 PNG。 |
 | `source/icons/` | 原始 SVG、来源和 SVG/PNG 校验值，供重新渲染与核对。 |
-| `source/mrs/` | 全部 47 个实际 MRS 文件。 |
-| `source/text/` | 官方 mihomo v1.19.32 从 MRS 导出的 47 个文本文件。 |
+| `source/mrs/` | 全部 46 个实际 MRS 文件。 |
+| `source/text/` | 官方 mihomo v1.19.32 从 MRS 导出的 46 个文本文件。 |
 | `source/classical/` | NSFW 与 Web3 的原始 classical 文件快照。 |
 | `source/manifest.json` | MRS 来源、行为、插入数量、导出数量和 SHA256。 |
 | `source/mrs-tool.json` | 官方转换器版本、下载地址及校验值。 |
@@ -60,7 +60,7 @@ MRS 导出文本中的精确域名转成 `domain_set`，`+.域名` 转成 `domai
 实际 MRS → 官方 DumpMrs 文本 → Egern 原生规则集 YAML
 ```
 
-47 个 MRS 的插入数量总计 212,727，规范化后导出 212,558 个条目。导出数量变化不代表丢弃匹配范围；全部文本均通过官方转换器往返核对。
+46 个 MRS 的插入数量总计 212,697，规范化后导出 212,528 个条目。导出数量变化不代表丢弃匹配范围；全部文本均通过官方转换器往返核对。
 
 IP 规则的 `no_resolve` 放在规则集文件顶层。`cn_ip.yaml` 用于末尾直连规则，允许解析；`cn_ip-no-resolve.yaml` 用于 UDP 443 逻辑规则，不触发解析。
 
@@ -114,7 +114,7 @@ Profile 直接写出各项配置值，不使用 YAML 锚点与别名；生成脚
 
 ## 校验和重建
 
-已通过 YAML 解析、49 个原生规则集字段/IP 检查、212,558 个官方导出条目的匹配覆盖核对、MRS/文本 SHA256 检查、47 次官方“文本 → MRS → 文本”往返核对、NSFW/Web3 合并语义检查、PNG 格式/尺寸/Alpha/校验值检查、远程引用对应本地文件检查、策略引用与循环检查、PCRE2 通配符和地区过滤检查；转换与校验脚本通过 Ruff 和 ty。
+已通过 YAML 解析、48 个原生规则集字段/IP 检查、212,528 个官方导出条目的匹配覆盖核对、MRS/文本 SHA256 检查、46 次官方“文本 → MRS → 文本”往返核对、NSFW/Web3 合并语义检查、PNG 格式/尺寸/Alpha/校验值检查、远程引用对应本地文件检查、策略引用与循环检查、PCRE2 通配符和地区过滤检查；转换与校验脚本通过 Ruff 和 ty。
 
 尚未在 iOS Egern 内实际导入与联网验证。
 

@@ -706,10 +706,6 @@ rules:
     update_interval: 86400
     policy: DIRECT
 - rule_set:
-    match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/epicgames.yaml
-    update_interval: 86400
-    policy: DIRECT
-- rule_set:
     match: https://cdn.jsdmirror.com/gh/Yoobohl/EgernTest@main/rulesets/nvidia_cn.yaml
     update_interval: 86400
     policy: DIRECT

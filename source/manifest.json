@@ -37,17 +37,6 @@
       "text_sha256": "0bec91e5332bf3eaf8c2427c53b523bbbf87fe97fd37373821aa53b2f9a93bfb"
     },
     {
-      "name": "epicgames",
-      "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/epicgames.mrs",
-      "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/epicgames.mrs",
-      "format": "mrs",
-      "behavior": "domain",
-      "count": 30,
-      "mrs_insertion_count": 30,
-      "mrs_sha256": "87096a7c01ded9ac4cd8639dbd6871663c1df60b534c78cee34cace1e3b7bd3e",
-      "text_sha256": "03208068ce9c5c1ef3e08bbbf7fae9d7d028cfa5a5b271ef726d8d6a3f440644"
-    },
-    {
       "name": "nvidia_cn",
       "source": "https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/nvidia@cn.mrs",
       "fetch_url": "https://raw.githubusercontent.com/appshubcc/bett-rules/meta/geo/geosite/nvidia@cn.mrs",
@@ -576,6 +565,6 @@
     "PROCESS-NAME,RodelPlayer.App.exe,Emby",
     "PROCESS-NAME,com.feifeiduck.capyplayer,Emby"
   ],
-  "routing_rule_count": 69,
+  "routing_rule_count": 68,
   "dns_forward_count": 4
 }

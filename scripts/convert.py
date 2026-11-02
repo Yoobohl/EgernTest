@@ -52,6 +52,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
     entries = {}
     manifest = []
     for name, provider in src["rule-providers"].items():
+        if name == "epicgames":
+            continue
         mrs_path = SOURCE / "mrs" / (name + ".mrs")
         text_path = SOURCE / "text" / (name + ".txt")
         payload, behavior, mrs_count = dump_mrs(
@@ -370,8 +372,8 @@ def build(raw_base=RAW_BASE, mihomo=DEFAULT_MIHOMO):
         elif kind == "RULE-SET":
             name, policy = parts[1:3]
             policy = policy_name(policy)
-            if name in ("cryptocurrency", "googlefcm"):
-                # Crypto is inserted with NSFW; FCM has no dedicated route.
+            if name in ("cryptocurrency", "googlefcm", "epicgames"):
+                # Crypto is inserted with NSFW; FCM and Epic have no dedicated routes.
                 continue
             if name == "apple_cn":
                 profile["rules"].append(

@@ -100,7 +100,8 @@ for path in (root / "rulesets").glob("*.yaml"):
             for item in entries:
                 pcre2.compile(item)
     sets[path.stem] = data
-assert len(sets) == 49
+assert len(sets) == 48
+assert "epicgames" not in sets
 
 
 def resolve(url):
